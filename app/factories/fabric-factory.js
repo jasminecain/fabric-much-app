@@ -2,22 +2,68 @@
 
 fabricmuch.factory('fabricFactory', function($q, $http) {
 
-  const getAllFabrics = function(user) {
-    return $q ((resolve, reject) => {
+  const getAllFabrics = function() {
+    return $q((resolve, reject) => {
       $http.get(`http://localhost:3000/fabrics`)
         .then((inventory) => {
-          // debugger
-          console.log(inventory)
+          console.log('fabricInv', inventory)
           resolve(inventory);
         })
         .catch((error) => {
-          console.log(error);
-          // debugger
+          console.log('fabricInvErr', error);
           reject(error);
         });
-      });
+    });
   };
 
-  return { getAllFabrics };
+  const getAllBolts = function() {
+    return $q((resolve, reject) => {
+      $http.get(`http://localhost:3000/bolts`)
+      .then((boltInventory) => {
+        // debugger
+        console.log('boltInventory', boltInventory);
+        resolve(boltInventory);
+      })
+      .catch((error) => {
+        // debugger
+        console.log('boltInvErr', error);
+        reject(error);
+      });
+    });
+  };
+
+  const getAllSwatches = function() {
+    return $q((resolve, reject) => {
+      $http.get(`http://localhost:3000/swatches`)
+        .then((swatchInv) => {
+          console.log('swatchInv', swatchInv);
+          resolve(swatchInv);
+        })
+        .catch((error) => {
+          console.log('swatchInvErr', error);
+          reject(erorr)
+        });
+    });
+  };
+
+  const getAllFabricTypes = function() {
+    return $q((resolve, reject) => {
+      $http.get(`http://localhost:3000/fabric_types`)
+        .then((fabricTypeInv) => {
+          console.log('fabricTypeInv', fabricTypeInv);
+          resolve(fabricTypeInv);
+        })
+        .catch((error) => {
+          console.log('fabricTypeInv', error);
+          reject(error)
+        });
+    });
+  };
+
+  // const getOneFabric = function(fabricId) {
+  //   return $q
+  // }
+
+  return { getAllFabrics, getAllBolts, getAllSwatches, getAllFabricTypes };
 
 });
