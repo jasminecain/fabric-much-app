@@ -7,10 +7,12 @@ fabricmuch.component('fabricComponent', {
 
     // let user = authFactory.getCurrentUser();
 
-
-    // $scope.init = function() {
-    //   $scope.showAllFabrics();
-    // };
+    $scope.init = function() {
+      $scope.showAllFabrics();
+      // $scope.showAllBolts();
+      // $scope.showAllSwatches();
+      // $scope.showAllFabricTypes();
+    };
 
     $scope.showAllFabrics = function() {
       // console.log('working?')
@@ -21,34 +23,27 @@ fabricmuch.component('fabricComponent', {
         });
     };
 
-    $scope.showAllBolts = function() {
-      fabricFactory.getAllBolts()
-        .then((bolt) => {
-          $scope.bolts = bolt.data;
-        });
-    };
+    // $scope.showAllBolts = function() {
+    //   fabricFactory.getAllBolts()
+    //     .then((bolt) => {
+    //       $scope.bolts = bolt.data;
+    //     });
+    // };
 
-    $scope.showAllSwatches = function() {
-      fabricFactory.getAllSwatches()
-        .then((swatches) => {
-          // console.log(swatches);
-          $scope.swatches = swatches.data;
-        });
-    };
+    // $scope.showAllSwatches = function() {
+    //   fabricFactory.getAllSwatches()
+    //     .then((swatches) => {
+    //       // console.log(swatches);
+    //       $scope.swatches = swatches.data;
+    //     });
+    // };
 
-    $scope.showAllFabricTypes = function() {
-      fabricFactory.getAllFabricTypes()
-        .then((fabricTypes) => {
-          // console.log('fabricTypes', fabricTypes);
-          $scope.fabricTypes = fabricTypes.data;
-        });
-    };
-
-
-    $scope.showAllFabrics();
-    $scope.showAllBolts();
-    $scope.showAllSwatches();
-    $scope.showAllFabricTypes();
-
+    // $scope.showAllFabricTypes = function() {
+    //   fabricFactory.getAllFabricTypes()
+    //     .then((fabricTypes) => {
+    //       // console.log('fabricTypes', fabricTypes);
+    //       $scope.fabricTypes = fabricTypes.data;
+    //     });
+    // };
   }
 });
