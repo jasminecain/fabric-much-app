@@ -60,6 +60,20 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     return call({uri: uri, method: 'GET'}, data);
   }
 
+  function put(uri, data) {
+    return call({uri: uri, method: 'PUT'}, data);
+  }
 
+  function patch(uri, data) {
+    return call({uri: uri, method: 'PATCH'}, data);
+  }
+
+  function post(uri, data) {
+    return call({uri: uri, method: 'POST'}, data);
+  }
+
+  function delete(uri, data) {
+    return call({uri: uri, method: 'DELETE'}, data);
+  }
 
 });

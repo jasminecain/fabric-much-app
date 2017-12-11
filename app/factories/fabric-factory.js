@@ -3,12 +3,16 @@
 fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
 
   return {
-    getAllFabrics
+    getAllFabrics,
+    getAllBolts,
+    getAllSwatches,
+    getAllFabricTypes,
   };
 
   function getAllFabrics() {
     return apiFactory.get('fabrics')
       .then(function(fabrics) {
+        debugger
         return fabrics;
       });
     // return $q((resolve, reject) => {
@@ -24,8 +28,16 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
     // });
   };
 
-  // const getAllBolts = function() {
-  //   return $q((resolve, reject) => {
+
+  function getAllBolts() {
+    return apiFactory.get('bolts')
+      .then(function(bolts) {
+        debugger
+        return bolts;
+      });
+  };
+
+
   //     $http.get(`http://localhost:3000/bolts`)
   //     .then((boltInventory) => {
   //       // debugger
@@ -39,6 +51,15 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   //     });
   //   });
   // };
+
+  function getAllSwatches() {
+    return apiFactory.get('swatches')
+      .then(function(swatches) {
+        debugger
+        return swatches;
+      });
+  };
+
 
   // const getAllSwatches = function() {
   //   return $q((resolve, reject) => {
@@ -54,6 +75,14 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   //   });
   // };
 
+  function getAllFabricTypes() {
+    return apiFactory.get('fabric_types')
+      .then(function(fabric_types) {
+        return fabric_types;
+      });
+  };
+
+
   // const getAllFabricTypes = function() {
   //   return $q((resolve, reject) => {
   //     $http.get(`http://localhost:3000/fabric_types`)
@@ -66,6 +95,13 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   //         reject(error)
   //       });
   //   });
+  // };
+
+  // function getOneFabric() {
+  //   return apiFactory.get('fabricId')
+  //     .then(function(fabricId) {
+  //       return fabricId;
+  //     });
   // };
 
   // const getOneFabric = function(fabricId) {
