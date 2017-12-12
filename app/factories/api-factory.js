@@ -6,14 +6,19 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     getBaseUrl,
     getUserToken,
     getAuthToken,
-    get
-  }
+    get,
+    put,
+    patch,
+    post,
+    destroy
+  };
 
   function getBaseUrl() {
     return 'http://localhost:3000/'
   }
 
   function getAuthToken() {
+
     if (localStorage.getItem('fmUser')) {
       return localStorage.getItem('fmUser').authentication_token;
     }
@@ -21,9 +26,9 @@ fabricmuch.factory('apiFactory', function($q, $http) {
 
   function getUserToken() {
     return $q((resolve, reject) => {
-      $http.get(`${self.getBaseUrl()} + users`, {
+      $http.get(`${self.getBaseUrl()} + items`, {
         headers: {
-        'Authorization': 'Token token=' + link ,
+        // 'Authorization': 'Token token=' + link ,
         'Authentication-Token': getAuthToken()
         }
       }).then(function(results) {
@@ -34,6 +39,7 @@ fabricmuch.factory('apiFactory', function($q, $http) {
 
   function call(opts, data) {
     let url = `${getBaseUrl()}${opts.uri}`;
+    // debugger
 
     return $q((resolve, reject) => {
       $http({
@@ -42,15 +48,14 @@ fabricmuch.factory('apiFactory', function($q, $http) {
         data: data,
         headers: {
           // 'Authorization': 'Token token=' + link ,
-          'Authentication-Token': getAuthToken()
+          // 'Authentication-Token': getAuthToken()
         }
       })
-      .then((inventory) => {
-        console.log('fabricInv', inventory)
-        resolve(inventory);
+      .then((res) => {
+        resolve(res);
       })
       .catch((error) => {
-        console.log('fabricInvErr', error);
+        console.log(error);
         reject(error);
       });
     });
@@ -69,11 +74,10 @@ fabricmuch.factory('apiFactory', function($q, $http) {
   }
 
   function post(uri, data) {
-    return call({uri: uri, method: 'POST'}, data);
+    return call({ uri: uri, method: 'POST' }, data);
   }
 
-  function delete(uri, data) {
+  function destroy(uri, data) {
     return call({uri: uri, method: 'DELETE'}, data);
   }
-
 });

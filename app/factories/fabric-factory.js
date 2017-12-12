@@ -12,7 +12,6 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   function getAllFabrics() {
     return apiFactory.get('fabrics')
       .then(function(fabrics) {
-        debugger
         return fabrics;
       });
     // return $q((resolve, reject) => {

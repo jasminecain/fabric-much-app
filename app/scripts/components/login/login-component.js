@@ -3,20 +3,30 @@
 fabricmuch.component('loginComponent', {
 
   templateUrl: 'app/scripts/components/login/login.html',
-  controller: function($scope) {
+  controller: function($scope, $state, authFactory) {
 
-    $scope.account = {
-      email: '',
-      password: '',
-      name: ''
-    };
+    // $scope.loginData = {
+    //   email: '',
+    //   password: '',
+    //   name: ''
+    // };
 
-    $scope.logIn = () => {
-      authFactory.logIn($scope.account)
-        .then(() => {
-          $state.go('fabric.items')
+    $scope.submitLogin = function(formData) {
+      authFactory.submitLogin(formData)
+        .then((res) => {
+          debugger
+          if (res) {
+            $state.go('fabric.items')
+          }
         });
     };
+
+    // $scope.logIn = () => {
+    //   authFactory.logIn($scope.account)
+    //     .then(() => {
+    //       $state.go('fabric.items')
+    //     });
+    // };
 
   }
 });
