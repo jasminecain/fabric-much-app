@@ -1,11 +1,32 @@
-<h1>Fabric Inventory</h1>
+<h1 ng-init="init()">Fabric Inventory</h1>
 <div class="container col s12 m4 l8">
   <div ng-repeat="fabric in fabrics">
     <div>
-        {{fabric}}
+      {{fabric}}
       <!-- <a ui-sref="fabric.items">{{ fabric.id }}</a> -->
     </div>
   </div>
+
+  <div ng-repeat="bolt in bolts">
+    <div>
+      {{bolt}}
+    </div>
+  </div>
+
+  <div ng-repeat="swatches in swatches">
+    <div>
+      swatch
+      {{swatches}}
+    </div>
+  </div>
+
+  <div ng-repeat="fabricType in fabricTypes">
+    <div>
+      fabric types
+      {{fabricTypes}}
+    </div>
+  </div>
+
 </div>
 
 

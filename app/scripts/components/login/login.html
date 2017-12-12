@@ -1,0 +1,47 @@
+<h1>Log In</h1>
+  <div class="form">
+    <div>
+      <form name="loginForm" id="loginForm" ng-submit="submitLogin(form2Data)" novalidate>
+        <div>
+          <div>
+            <input type="email"
+                   name="email"
+                   id="loginEmail"
+                   placeholder="Email"
+                   ng-model="formData.email"
+                   required />
+
+            <div  >
+              <input type="password"
+                     name="password"
+                     id="loginPassword"
+                     placeholder="Password"
+                     ng-model="formData.password"
+                     required />
+            </div>
+
+            <button type="submit" class="button">Log In</button>
+            <div>
+              <a href="#" ng-click="showSignup()">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+
+
+
+      <!-- <h3>Email Address</h3>
+
+      <input type="email" ng-model="user.email">
+    </div>
+  </div>
+
+  <div class="form">
+    <div>
+      <h3>Password</h3>
+      <input type="password" id="pwd" ng-model="user.password">
+    </div>
+  </div>
+  <button ng-click="login()" class="btn">Log In</button> -->
