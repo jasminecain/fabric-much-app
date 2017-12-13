@@ -14,65 +14,23 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       .then(function(fabrics) {
         return fabrics;
       });
-    // return $q((resolve, reject) => {
-    //   $http.get(`http://localhost:3000/fabrics`)
-    //     .then((inventory) => {
-    //       console.log('fabricInv', inventory)
-    //       resolve(inventory);
-    //     })
-    //     .catch((error) => {
-    //       console.log('fabricInvErr', error);
-    //       reject(error);
-    //     });
-    // });
   };
-
 
   function getAllBolts() {
     return apiFactory.get('bolts')
       .then(function(bolts) {
-        debugger
+        // debugger
         return bolts;
       });
   };
 
-
-  //     $http.get(`http://localhost:3000/bolts`)
-  //     .then((boltInventory) => {
-  //       // debugger
-  //       console.log('boltInventory', boltInventory);
-  //       resolve(boltInventory);
-  //     })
-  //     .catch((error) => {
-  //       // debugger
-  //       console.log('boltInvErr', error);
-  //       reject(error);
-  //     });
-  //   });
-  // };
-
   function getAllSwatches() {
     return apiFactory.get('swatches')
       .then(function(swatches) {
-        debugger
+        // debugger
         return swatches;
       });
   };
-
-
-  // const getAllSwatches = function() {
-  //   return $q((resolve, reject) => {
-  //     $http.get(`http://localhost:3000/swatches`)
-  //       .then((swatchInv) => {
-  //         console.log('swatchInv', swatchInv);
-  //         resolve(swatchInv);
-  //       })
-  //       .catch((error) => {
-  //         console.log('swatchInvErr', error);
-  //         reject(error);
-  //       });
-  //   });
-  // };
 
   function getAllFabricTypes() {
     return apiFactory.get('fabric_types')
@@ -81,21 +39,6 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   };
 
-
-  // const getAllFabricTypes = function() {
-  //   return $q((resolve, reject) => {
-  //     $http.get(`http://localhost:3000/fabric_types`)
-  //       .then((fabricTypeInv) => {
-  //         console.log('fabricTypeInv', fabricTypeInv);
-  //         resolve(fabricTypeInv);
-  //       })
-  //       .catch((error) => {
-  //         console.log('fabricTypeInv', error);
-  //         reject(error)
-  //       });
-  //   });
-  // };
-
   // function getOneFabric() {
   //   return apiFactory.get('fabricId')
   //     .then(function(fabricId) {
@@ -103,7 +46,4 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   //     });
   // };
 
-  // const getOneFabric = function(fabricId) {
-  //   return $q
-  // }
 });

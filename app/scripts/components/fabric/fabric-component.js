@@ -18,7 +18,8 @@ fabricmuch.component('fabricComponent', {
       // console.log('working?')
       fabricFactory.getAllFabrics()
         .then((fabric) => {
-          // console.log('fabric', fabric);
+          console.log('fabric', fabric);
+          debugger;
           $scope.fabrics = fabric.data;
         });
     };
@@ -26,7 +27,7 @@ fabricmuch.component('fabricComponent', {
     $scope.showAllBolts = function() {
       fabricFactory.getAllBolts()
         .then((bolt) => {
-          debugger
+          // debugger
           $scope.bolts = bolt.data;
         });
     };
@@ -35,7 +36,7 @@ fabricmuch.component('fabricComponent', {
       fabricFactory.getAllSwatches()
         .then((swatches) => {
           // console.log(swatches);
-          debugger
+          // debugger
           $scope.swatches = swatches.data;
         });
     };
@@ -43,7 +44,7 @@ fabricmuch.component('fabricComponent', {
     $scope.showAllFabricTypes = function() {
       fabricFactory.getAllFabricTypes()
         .then((fabricTypes) => {
-          debugger
+          // debugger
           // console.log('fabricTypes', fabricTypes);
           $scope.fabricTypes = fabricTypes.data;
         });

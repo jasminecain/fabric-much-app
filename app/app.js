@@ -33,7 +33,7 @@ const fabricmuch = angular.module('FabricMuchApp', [
   })
 
   .state('fabric.detail', {
-    url: '/fabrics/:fabricId',
+    url: '/fabric/:fabricId',
     views: {
       'fabricDetail': {
         component: 'fabricDetailComponent'

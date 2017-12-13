@@ -4,8 +4,6 @@ fabricmuch.factory('apiFactory', function($q, $http) {
 
   return {
     getBaseUrl,
-    getUserToken,
-    getAuthToken,
     get,
     put,
     patch,
@@ -13,12 +11,14 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     destroy
   };
 
+  // getUserToken,
+  // getAuthToken,
+
   function getBaseUrl() {
     return 'http://localhost:3000/'
   }
 
   function getAuthToken() {
-
     if (localStorage.getItem('fmUser')) {
       return localStorage.getItem('fmUser').authentication_token;
     }
@@ -28,8 +28,7 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     return $q((resolve, reject) => {
       $http.get(`${self.getBaseUrl()} + items`, {
         headers: {
-        // 'Authorization': 'Token token=' + link ,
-        'Authentication-Token': getAuthToken()
+        'Authentication-Token': localStorage.getItem('fmUser').authToken
         }
       }).then(function(results) {
         resolve(results.data);
@@ -48,7 +47,7 @@ fabricmuch.factory('apiFactory', function($q, $http) {
         data: data,
         headers: {
           // 'Authorization': 'Token token=' + link ,
-          // 'Authentication-Token': getAuthToken()
+          'Authentication-Token': getAuthToken()
         }
       })
       .then((res) => {
