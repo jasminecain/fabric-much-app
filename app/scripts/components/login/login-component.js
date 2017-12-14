@@ -17,7 +17,7 @@ fabricmuch.component('loginComponent', {
         .then((res) => {
           debugger
           if (res) {
-            $state.go('fabric.items')
+            $state.go('fabrics.items')
           }
         });
     };

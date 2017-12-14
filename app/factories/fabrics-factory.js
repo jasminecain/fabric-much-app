@@ -7,6 +7,9 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
     getAllBolts,
     getAllSwatches,
     getAllFabricTypes,
+    getStores,
+    getFabricTypes,
+    addFabric
   };
 
   function getAllFabrics() {
@@ -39,6 +42,22 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   };
 
+  function addFabric(fabricForm) {
+    // let newFabric = JSON.stringify(fabricForm);
+    return apiFactory.post('fabrics', fabricForm)
+      .then((data) => {
+        return data;
+      }, (error) => {
+        let errCode = error.code;
+        let errMsg = error.message;
+        console.log('addFabErr', errCode, errMsg);
+      });
+  };
+
+  function editFabric() {
+
+  }
+
   // function getOneFabric() {
   //   return apiFactory.get('fabricId')
   //     .then(function(fabricId) {
@@ -46,4 +65,22 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   //     });
   // };
 
+  function deleteFabric() {
+
+  }
+
+  function getStores() {
+    return apiFactory.get('fabrics/stores')
+      .then(function(stores) {
+        return stores;
+      });
+  };
+
+  function getFabricTypes() {
+    return apiFactory.get('fabrics/fabric_types')
+      .then(function(fabricTypes) {
+        debugger;
+        return fabricTypes;
+      });
+  };
 });

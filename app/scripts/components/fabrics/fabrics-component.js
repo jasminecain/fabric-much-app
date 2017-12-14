@@ -1,8 +1,8 @@
 'use strict';
 
-fabricmuch.component('fabricComponent', {
+fabricmuch.component('fabricsComponent', {
 
-  templateUrl: 'app/scripts/components/fabric/fabric.html',
+  templateUrl: 'app/scripts/components/fabrics/fabrics.html',
   controller: function(fabricFactory, $scope) {
 
     // let user = authFactory.getCurrentUser();
@@ -12,6 +12,21 @@ fabricmuch.component('fabricComponent', {
       $scope.showAllBolts();
       $scope.showAllSwatches();
       $scope.showAllFabricTypes();
+      $scope.getStores();
+      $scope.getFabricTypes();
+    };
+
+    $scope.saveFabric = function(formData) {
+      // fabricForm.uid = user.uid;
+      debugger
+
+      fabricFactory.addFabric(formData)
+        .then((data) => {
+          debugger
+          console.log('saveFabric', data);
+          $scope.showAllFabrics();
+          $scope.clearForm();
+        });
     };
 
     $scope.showAllFabrics = function() {
@@ -19,7 +34,7 @@ fabricmuch.component('fabricComponent', {
       fabricFactory.getAllFabrics()
         .then((fabric) => {
           console.log('fabric', fabric);
-          debugger;
+          // debugger;
           $scope.fabrics = fabric.data;
         });
     };
@@ -45,7 +60,26 @@ fabricmuch.component('fabricComponent', {
       fabricFactory.getAllFabricTypes()
         .then((fabricTypes) => {
           // debugger
-          // console.log('fabricTypes', fabricTypes);
+          console.log('fabricTypes', fabricTypes);
+          $scope.fabricTypes = fabricTypes.data;
+        });
+    };
+
+    $scope.clearForm = function() {
+      $scope.fabricForm = {};
+    }
+
+    $scope.getStores = function() {
+      fabricFactory.getStores()
+        .then((stores) => {
+          $scope.stores = stores.data;
+        });
+    };
+
+    $scope.getFabricTypes = function() {
+      fabricFactory.getFabricTypes()
+        .then((fabricTypes) => {
+          debugger;
           $scope.fabricTypes = fabricTypes.data;
         });
     };
