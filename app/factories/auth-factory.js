@@ -2,10 +2,12 @@
 
 fabricmuch.factory('authFactory', function($http, apiFactory) {
 
-
   return {
     submitLogin,
-    submitSignup
+    submitSignup,
+    storeUserData,
+    getAuthToken
+
   };
 
   // $scope.loginData = {
@@ -21,8 +23,6 @@ fabricmuch.factory('authFactory', function($http, apiFactory) {
   function getAuthToken() {
     return localStorage.getItem('fmUser').auth_token;
   }
-
-  localStorage
 
   function isAuthenticated() {
     return apiFactory.get('users')
@@ -54,7 +54,6 @@ fabricmuch.factory('authFactory', function($http, apiFactory) {
         return users;
       })
   };
-
 
   function getCurrentUser(users) {
     return apiFactory.get('users')

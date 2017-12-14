@@ -16,24 +16,24 @@ const fabricmuch = angular.module('FabricMuchApp', [
   })
 
   //parent state - abstract true does not render; placeholder only
-  .state('fabric', {
+  .state('fabrics', {
     abstract: true,
-    templateUrl: 'app/templates/pages/fabric.html'
+    templateUrl: 'app/templates/pages/fabrics.html'
   })
 
   //child state of fabric
-  .state('fabric.items', {
-    url: '/fabric',
+  .state('fabrics.items', {
+    url: '/fabrics',
     views: {
-      'fabric': {
-        component: 'fabricComponent'
+      'fabrics': {
+        component: 'fabricsComponent'
       }
     },
     data: { requireAuth: true }
   })
 
   .state('fabric.detail', {
-    url: '/fabrics/:fabricId',
+    url: '/fabric/:fabricId',
     views: {
       'fabricDetail': {
         component: 'fabricDetailComponent'
