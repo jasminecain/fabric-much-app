@@ -14,16 +14,23 @@ fabricmuch.component('fabricsComponent', {
       $scope.showAllFabricTypes();
       $scope.getStores();
       $scope.getFabricTypes();
+      // $scope.deleteFabric();
     };
 
-    $scope.saveFabric = function(formData) {
+    // let user = { user: 1 }
+
+    // $scope.getFabricTypes = [];
+
+    $scope.submitFabric = function(formData) {
       // fabricForm.uid = user.uid;
+      // formData.user_id = 1
       debugger
 
       fabricFactory.addFabric(formData)
-        .then((data) => {
+      .then((data) => {
+          // $scope.newFabric = data.data;
           debugger
-          console.log('saveFabric', data);
+          console.log('submitFabric', data);
           $scope.showAllFabrics();
           $scope.clearForm();
         });
@@ -58,15 +65,13 @@ fabricmuch.component('fabricsComponent', {
 
     $scope.showAllFabricTypes = function() {
       fabricFactory.getAllFabricTypes()
-        .then((fabricTypes) => {
-          // debugger
-          console.log('fabricTypes', fabricTypes);
-          $scope.fabricTypes = fabricTypes.data;
+        .then((allFabricTypes) => {
+          $scope.allFabricTypes = allFabricTypes.data;
         });
     };
 
     $scope.clearForm = function() {
-      $scope.fabricForm = {};
+      $scope.fabric = {};
     }
 
     $scope.getStores = function() {
@@ -79,9 +84,28 @@ fabricmuch.component('fabricsComponent', {
     $scope.getFabricTypes = function() {
       fabricFactory.getFabricTypes()
         .then((fabricTypes) => {
-          debugger;
+          console.log('fabricTypes', fabricTypes);
           $scope.fabricTypes = fabricTypes.data;
         });
     };
+
+    $scope.editFabric = function(fabricId) {
+      fabricFactory.editFabric(fabricId)
+        .then((res) => {
+          debugger
+          $scope.showAllFabrics();
+        });
+    };
+
+    $scope.deleteFabric = function(fabricId) {
+        debugger;
+        fabricFactory.deleteFabric(fabricId)
+        .then((res) => {
+          debugger
+          $scope.showAllFabrics();
+        });
+    };
+
+
   }
 });

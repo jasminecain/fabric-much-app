@@ -9,7 +9,10 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
     getAllFabricTypes,
     getStores,
     getFabricTypes,
-    addFabric
+    addFabric,
+    getOneFabric,
+    editFabric,
+    deleteFabric
   };
 
   function getAllFabrics() {
@@ -37,14 +40,13 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
 
   function getAllFabricTypes() {
     return apiFactory.get('fabric_types')
-      .then(function(fabric_types) {
-        return fabric_types;
+      .then(function(allFabricTypes) {
+        return allFabricTypes;
       });
   };
 
-  function addFabric(fabricForm) {
-    // let newFabric = JSON.stringify(fabricForm);
-    return apiFactory.post('fabrics', fabricForm)
+  function addFabric(fabric) {
+    return apiFactory.post('fabrics', { fabric })
       .then((data) => {
         return data;
       }, (error) => {
@@ -54,20 +56,39 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   };
 
-  function editFabric() {
+  function editFabric(fabricId) {
+    return apiFactory.patch(`fabrics/${fabricId}`, fabricId)
+      .then((data) => {
+        return data;
+      }, (error) => {
+        let errCode = error.code;
+        let errMsg = error.message;
+        console.log('editFabricErr', errCode, errMsg);
+      });
+  };
 
-  }
+  function getOneFabric(fabricId) {
+    return apiFactory.get('fabricId')
+      .then((data) => {
+        return data;
+      }, (error) => {
+        let errCode = error.code;
+        let errMsg = error.message;
+        console.log('getOneFabricErr', errCode, errMsg);
+      });
+  };
 
-  // function getOneFabric() {
-  //   return apiFactory.get('fabricId')
-  //     .then(function(fabricId) {
-  //       return fabricId;
-  //     });
-  // };
-
-  function deleteFabric() {
-
-  }
+  function deleteFabric(fabricId) {
+    debugger;
+    return apiFactory.destroy(`fabrics/${fabricId}`, fabricId)
+      .then((data) => {
+        return data;
+      }, (error) => {
+        let errCode = error.code;
+        let errMsg = error.message;
+        console.log('deleteFabricErr', errCode, errMsg);
+      });
+  };
 
   function getStores() {
     return apiFactory.get('fabrics/stores')
@@ -79,8 +100,8 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   function getFabricTypes() {
     return apiFactory.get('fabrics/fabric_types')
       .then(function(fabricTypes) {
-        debugger;
         return fabricTypes;
       });
+
   };
 });
