@@ -4,8 +4,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
 
   return {
     getAllFabrics,
-    getAllBolts,
-    getAllSwatches,
+    getInventoryTypes,
     getAllFabricTypes,
     getStores,
     getFabricTypes,
@@ -22,19 +21,11 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   };
 
-  function getAllBolts() {
-    return apiFactory.get('bolts')
-      .then(function(bolts) {
+  function getInventoryTypes() {
+    return apiFactory.get('inventory_types')
+      .then(function(inventoryTypes) {
         // debugger
-        return bolts;
-      });
-  };
-
-  function getAllSwatches() {
-    return apiFactory.get('swatches')
-      .then(function(swatches) {
-        // debugger
-        return swatches;
+        return inventoryTypes;
       });
   };
 
@@ -79,7 +70,6 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   };
 
   function deleteFabric(fabricId) {
-    debugger;
     return apiFactory.destroy(`fabrics/${fabricId}`, fabricId)
       .then((data) => {
         return data;

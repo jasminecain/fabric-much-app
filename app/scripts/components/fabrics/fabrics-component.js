@@ -3,14 +3,13 @@
 fabricmuch.component('fabricsComponent', {
 
   templateUrl: 'app/scripts/components/fabrics/fabrics.html',
-  controller: function(fabricFactory, $scope) {
+  controller: function(fabricFactory, $scope, $state) {
 
     // let user = authFactory.getCurrentUser();
 
     $scope.init = function() {
       $scope.showAllFabrics();
-      $scope.showAllBolts();
-      $scope.showAllSwatches();
+      $scope.showInventoryTypes();
       $scope.showAllFabricTypes();
       $scope.getStores();
       $scope.getFabricTypes();
@@ -24,12 +23,10 @@ fabricmuch.component('fabricsComponent', {
     $scope.submitFabric = function(formData) {
       // fabricForm.uid = user.uid;
       // formData.user_id = 1
-      debugger
 
       fabricFactory.addFabric(formData)
       .then((data) => {
           // $scope.newFabric = data.data;
-          debugger
           console.log('submitFabric', data);
           $scope.showAllFabrics();
           $scope.clearForm();
@@ -46,20 +43,11 @@ fabricmuch.component('fabricsComponent', {
         });
     };
 
-    $scope.showAllBolts = function() {
-      fabricFactory.getAllBolts()
-        .then((bolt) => {
+    $scope.showInventoryTypes = function() {
+      fabricFactory.getInventoryTypes()
+        .then((inventoryTypes) => {
           // debugger
-          $scope.bolts = bolt.data;
-        });
-    };
-
-    $scope.showAllSwatches = function() {
-      fabricFactory.getAllSwatches()
-        .then((swatches) => {
-          // console.log(swatches);
-          // debugger
-          $scope.swatches = swatches.data;
+          $scope.inventoryTypes = inventoryTypes.data;
         });
     };
 
@@ -67,6 +55,13 @@ fabricmuch.component('fabricsComponent', {
       fabricFactory.getAllFabricTypes()
         .then((allFabricTypes) => {
           $scope.allFabricTypes = allFabricTypes.data;
+        });
+    };
+
+    $scope.getOneFabric = function(fabricId) {
+      fabricFactory.getOneFabric('fabricId')
+        .then((getOneFabric) => {
+         $scope.getOneFabric = getOneFabric.data;
         });
     };
 
@@ -106,6 +101,9 @@ fabricmuch.component('fabricsComponent', {
         });
     };
 
+    $scope.toEditFabricView = function() {
+      $state.go('editFabric.view', fabricId);
+    };
 
   }
 });
