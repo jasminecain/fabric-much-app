@@ -6,6 +6,7 @@ fabricmuch.component('fabricEditComponent', {
   controller: function($scope, fabricFactory) {
 
     $scope.init = function() {
+      $scope.getOneFabric($state.params.fabricId);
       $scope.submitFabric();
       $scope.showAllFabrics();
       $scope.clearForm();
@@ -23,6 +24,14 @@ fabricmuch.component('fabricEditComponent', {
           console.log('submitFabric', data);
           $scope.showAllFabrics();
           $scope.clearForm();
+        });
+    };
+
+    $scope.getOneFabric = function(fabricId) {
+      fabricFactory.getOneFabric('fabricId')
+        .then((getOneFabric) => {
+          debugger
+         $scope.getOneFabric = getOneFabric.data;
         });
     };
 

@@ -1,4 +1,6 @@
-<h1 ng-init="init()">Fabric Inventory</h1>
+<h1>Fabric Much</h1>
+
+<h3 ng-init="init()">Fabric Inventory</h3>
 <div class="container col s12 m4 l8">
   <h4>Add Inventory</h4>
   <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
@@ -68,7 +70,7 @@
     <td> {{ fabric.price }} </td>
     <td> {{ fabric.quantity }} </td>
     <td> {{ fabric.store }} </td>
-    <td><a ui-sref="fabricsDetail({ fabricId: fabric.id })">details</a></td>
+    <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
     <td><button type="button" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</button></td>
     <td><button type="button" ng-click="deleteFabric(fabric.id)">Delete</button></td>
   </tr>

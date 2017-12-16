@@ -33,6 +33,11 @@ const fabricmuch = angular.module('FabricMuchApp', [
   })
 
   .state('fabricsDetail', {
+    abstract: true,
+    templateUrl: 'app/templates/pages/fabric-detail.html',
+  })
+
+  .state('fabricsDetail.page', {
     url: '/fabrics/:fabricId',
     views: {
       'fabricsDetail': {

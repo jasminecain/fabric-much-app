@@ -59,7 +59,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   };
 
   function getOneFabric(fabricId) {
-    return apiFactory.get('fabricId')
+    return apiFactory.get(`fabrics/${fabricId}`, fabricId)
       .then((data) => {
         return data;
       }, (error) => {
