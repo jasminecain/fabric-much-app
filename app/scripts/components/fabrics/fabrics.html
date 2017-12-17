@@ -1,69 +1,39 @@
-<h1 ng-init="init()">Fabric Inventory</h1>
+<h1>Fabric Much</h1>
+
+<h3 ng-init="init()">Fabric Inventory</h3>
 <div class="container col s12 m4 l8">
-  <!-- <div ng-repeat="fabric in fabrics">
+  <h4>Add Inventory</h4>
+  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
     <div>
-      {{fabric}}
-      <a ui-sref="fabric.items">{{ fabric.id }}</a>
-    </div>
-  </div> -->
-
-  <!-- <div ng-repeat="bolt in bolts">
-    <div>
-      {{bolt}}
-    </div>
-  </div> -->
-
-  <!-- <div ng-repeat="swatches in swatches">
-    <div>
-      swatch
-      {{swatches}}
-    </div>
-  </div> -->
-
-  <!-- <div ng-repeat="fabricType in fabricTypes">
-    <div>
-      fabric types
-      {{fabricTypes}}
-    </div>
-  </div> -->
-</div>
-
-<h4>Add Inventory</h4>
-<form name="fabricForm" ng-submit="saveFabric(fabric)" novalidate>
-    <div>
-      <span>Fabric Name</span>
+      <label>Fabric Name</label>
       <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
     </div>
 
     <div>
-      <span>SKU#</span>
+      <label>SKU#</label>
       <input type="text" name="fabric_sku" placeholder="Sku number" ng-model="fabric.barcode" ng-minlength="2" required>
     </div>
 
-      <input type="radio" name="inv_type" value="bolt"> Bolt<br>
-      <input type="radio" name="inv_type" value="fabric"> Fabric<br>
-      <input type="radio" name="inv_type" value="swatch"> Swatches
+    <label ng-repeat="type in inventoryTypes">
+      <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
+    </label><br/>
 
   <!-- upload swatch -->
 
     <div>
       <label>Fabric Types</label>
-      <select ng-model="fabric_types.fabric_type" ng-options="fabricType for fabricType in fabricTypes" required></select>
+      <select ng-model="fabric.fabric_type_id" ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes" required></select>
     </div>
 
-    <!-- <div>
-      <span>Fabric Type</span>
-      <input type="text" name="fabric_type" placeholder="Fabric Type" ng-model="fabric.fabric_type_id" ng-minlength="2" required>
-    </div> -->
   <!-- if input doesn't exist create one in database? -->
 
     <div>
-      <span>Price</span>
+      <label>Price</label>
       <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
     </div>
 
     <div>
-      <span>Quantity</span>
+      <label>Quantity</label>
       <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
     </div>
 
@@ -74,5 +44,34 @@
 
     <br>
     <button type="submit" class="button">Submit</button>
-</form>
+  </form>
+</div>
 
+<h4>Current Inventory</h4>
+<table>
+  <tr>
+    <th>Fabric Name</th>
+    <th>SKU#</th>
+    <th>Inventory Type</th>
+    <th>Fabric Type</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Store</th>
+    <th>Fabric Details</th>
+    <th>Edit</th>
+    <th>Delete?</th>
+  </tr>
+  <tr ng-repeat="fabric in fabrics">
+    <td> {{ fabric.fabric_name }} </td>
+    <td> {{ fabric.barcode }} </td>
+    <!-- bolt, swatch or fabric -->
+    <td> {{  }} </td>
+    <td> {{ fabric.fabric_type.fabric_type }} </td>
+    <td> {{ fabric.price }} </td>
+    <td> {{ fabric.quantity }} </td>
+    <td> {{ fabric.store }} </td>
+    <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
+    <td><button type="button" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</button></td>
+    <td><button type="button" ng-click="deleteFabric(fabric.id)">Delete</button></td>
+  </tr>
+</table>

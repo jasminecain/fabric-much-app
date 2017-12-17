@@ -3,27 +3,31 @@
 fabricmuch.component('fabricsComponent', {
 
   templateUrl: 'app/scripts/components/fabrics/fabrics.html',
-  controller: function(fabricFactory, $scope) {
+  controller: function(fabricFactory, $scope, $state) {
 
     // let user = authFactory.getCurrentUser();
 
     $scope.init = function() {
       $scope.showAllFabrics();
-      $scope.showAllBolts();
-      $scope.showAllSwatches();
+      $scope.showInventoryTypes();
       $scope.showAllFabricTypes();
       $scope.getStores();
       $scope.getFabricTypes();
+      // $scope.deleteFabric();
     };
 
-    $scope.saveFabric = function(formData) {
+    // let user = { user: 1 }
+
+    // $scope.getFabricTypes = [];
+
+    $scope.submitFabric = function(formData) {
       // fabricForm.uid = user.uid;
-      debugger
+      // formData.user_id = 1
 
       fabricFactory.addFabric(formData)
-        .then((data) => {
-          debugger
-          console.log('saveFabric', data);
+      .then((data) => {
+          // $scope.newFabric = data.data;
+          console.log('submitFabric', data);
           $scope.showAllFabrics();
           $scope.clearForm();
         });
@@ -39,34 +43,30 @@ fabricmuch.component('fabricsComponent', {
         });
     };
 
-    $scope.showAllBolts = function() {
-      fabricFactory.getAllBolts()
-        .then((bolt) => {
+    $scope.showInventoryTypes = function() {
+      fabricFactory.getInventoryTypes()
+        .then((inventoryTypes) => {
           // debugger
-          $scope.bolts = bolt.data;
-        });
-    };
-
-    $scope.showAllSwatches = function() {
-      fabricFactory.getAllSwatches()
-        .then((swatches) => {
-          // console.log(swatches);
-          // debugger
-          $scope.swatches = swatches.data;
+          $scope.inventoryTypes = inventoryTypes.data;
         });
     };
 
     $scope.showAllFabricTypes = function() {
       fabricFactory.getAllFabricTypes()
-        .then((fabricTypes) => {
-          // debugger
-          console.log('fabricTypes', fabricTypes);
-          $scope.fabricTypes = fabricTypes.data;
+        .then((allFabricTypes) => {
+          $scope.allFabricTypes = allFabricTypes.data;
+        });
+    };
+
+    $scope.getOneFabric = function(fabricId) {
+      fabricFactory.getOneFabric('fabricId')
+        .then((getOneFabric) => {
+         $scope.getOneFabric = getOneFabric.data;
         });
     };
 
     $scope.clearForm = function() {
-      $scope.fabricForm = {};
+      $scope.fabric = {};
     }
 
     $scope.getStores = function() {
@@ -79,9 +79,31 @@ fabricmuch.component('fabricsComponent', {
     $scope.getFabricTypes = function() {
       fabricFactory.getFabricTypes()
         .then((fabricTypes) => {
-          debugger;
+          console.log('fabricTypes', fabricTypes);
           $scope.fabricTypes = fabricTypes.data;
         });
     };
+
+    $scope.editFabric = function(fabricId) {
+      fabricFactory.editFabric(fabricId)
+        .then((res) => {
+          debugger
+          $scope.showAllFabrics();
+        });
+    };
+
+    $scope.deleteFabric = function(fabricId) {
+        debugger;
+        fabricFactory.deleteFabric(fabricId)
+        .then((res) => {
+          debugger
+          $scope.showAllFabrics();
+        });
+    };
+
+    $scope.toEditFabricView = function() {
+      $state.go('editFabric.view', fabricId);
+    };
+
   }
 });

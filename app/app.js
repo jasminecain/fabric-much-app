@@ -32,10 +32,15 @@ const fabricmuch = angular.module('FabricMuchApp', [
     data: { requireAuth: true }
   })
 
-  .state('fabric.detail', {
-    url: '/fabric/:fabricId',
+  .state('fabricsDetail', {
+    abstract: true,
+    templateUrl: 'app/templates/pages/fabric-detail.html',
+  })
+
+  .state('fabricsDetail.page', {
+    url: '/fabrics/:fabricId',
     views: {
-      'fabricDetail': {
+      'fabricsDetail': {
         component: 'fabricDetailComponent'
       }
     },
@@ -48,10 +53,10 @@ const fabricmuch = angular.module('FabricMuchApp', [
   })
 
   .state('editFabric.view', {
-    url: '/fabric/:fabricId/edit',
+    url: '/fabrics/:fabricId/edit',
     views: {
       'editFabric': {
-        component: 'editFabricComponent'
+        component: 'fabricEditComponent'
       }
     },
     data: { requireAuth: true }

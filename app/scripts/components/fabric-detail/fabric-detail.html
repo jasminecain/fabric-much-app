@@ -1,0 +1,26 @@
+<h4>Current Inventory</h4>
+<table>
+  <tr ng-init="init()">
+    <th>Fabric Name</th>
+    <th>SKU#</th>
+    <th>Inventory Type</th>
+    <th>Fabric Type</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Store</th>
+    <th>Edit</th>
+    <th>Delete?</th>
+  </tr>
+  <tr>
+    <td> {{ fabric.fabric_name }} </td>
+    <td> {{ fabric.barcode }} </td>
+    <!-- bolt, swatch or fabric -->
+    <td> {{  }} </td>
+    <td> {{ fabric.fabric_type.fabric_type }} </td>
+    <td> {{ fabric.price }} </td>
+    <td> {{ fabric.quantity }} </td>
+    <td> {{ fabric.store }} </td>
+    <td><button type="button" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</button></td>
+    <td><button type="button" ng-click="deleteFabric(fabric.id)">Delete</button></td>
+  </tr>
+</table>

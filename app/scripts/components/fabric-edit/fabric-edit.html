@@ -1,65 +1,44 @@
-<h2>Add Inventory</h2>
-<form name="fabricForm" ng-submit="saveFabric(user, fabricForm)" novalidate>
-  <div>
-    <span>Fabric Name</span>
-    <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="" ng-minlength="2" required>
+<h3 ng-init="init()">Edit Inventory</h3>
+<h2>{{foo}}</h2>
+<form name="fabricForm" ng-submit="updateFabric(fabric)" novalidate>
+  <div class="input field">
+    <label for="fabric-name">Fabric Name</label>
+    <input id="fabric-name" type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
   </div>
 
-  <div>
-    <span>SKU#</span>
-    <input type="number" name="fabric_sku" placeholder="Sku number" ng-model="" ng-minlength="2" required>
+  <div class="input field">
+    <label>SKU#</label>
+    <input type="text" name="fabric_sku" placeholder="Sku number" ng-model="fabric.barcode" ng-minlength="2" required>
   </div>
 
-  <form action="">
-    <input type="radio" name="inv_type" value="bolt"> Bolt<br>
-    <input type="radio" name="inv_type" value="fabric"> Fabric<br>
-    <input type="radio" name="inv_type" value="swatch"> Swatches
-  </form>
+  <label ng-repeat="type in inventoryTypes">
+    <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
+  </label><br/>
 
 <!-- upload swatch -->
-<!-- how the heck am i going to store this?? -->
 
   <div>
-    <span>Fabric Type</span>
-    <input type="text" name="fabric_type" placeholder="Fabric Type" ng-model="" ng-minlength="2" required>
+    <label>Fabric Types</label>
+    <select ng-model="fabric.fabric_type_id" ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes" required></select>
   </div>
+
 <!-- if input doesn't exist create one in database? -->
 
-  <!-- <div class="container">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Fabric Store Purchased:
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Joanns</a></li>
-        <li><a href="#">Hobby Lobby</a></li>
-        <li><a href="#">Fabric.com</a></li>
-        <li><a href="#">Walmart</a></li>
-      </ul>
-    </div>
-  </div> -->
+  <div class="input field">
+    <label>Price</label>
+    <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
+  </div>
 
-  <div>
-    <span>Price</span>
-    <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="" ng-minlength="2" required>
+  <div class="input field">
+    <label>Quantity</label>
+    <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
   </div>
 
   <div>
-    <span>Quantity</span>
-    <input type="number" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="" ng-minlength="" required>
-  </div>
-
-  <!-- <select name="stores">
-    <option value="joanns">Joanns</option>
-    <option value="hobby-lobby">Hobby Lobby</option>
-    <option value="fabric-dotcom">Fabric.com</option>
-    <option value="walmart">Walmart</option>
-  </select> -->
-
-  <div>
-    <div>{{ fabric.store}} Store</div>
-    <select ng-model="fabric.store" ng-options=" fabric for fabrics in fabrics.store" required></select>
+    <label>Store</label>
+    <select ng-model="fabric.store" ng-options="store as store for store in stores" required></select>
   </div>
 
   <br>
-  <button type="submit" class="button">Submit</button>
+  <button type="submit" class="button">Update Fabric</button>
 </form>
