@@ -3,52 +3,36 @@
 fabricmuch.component('fabricEditComponent', {
 
   templateUrl: 'app/scripts/components/fabric-edit/fabric-edit.html',
-  controller: function($scope, fabricFactory) {
+  controller: function($scope, fabricFactory, $state) {
 
     $scope.init = function() {
       $scope.getOneFabric($state.params.fabricId);
-      $scope.submitFabric();
-      $scope.showAllFabrics();
-      $scope.clearForm();
       $scope.showInventoryTypes();
       $scope.getStores();
+      $scope.showAllFabricTypes();
     };
 
-    $scope.submitFabric = function(formData) {
-      // fabricForm.uid = user.uid;
-      // formData.user_id = 1
-
-      fabricFactory.addFabric(formData)
+    $scope.updateFabric = function(fabric) {
+      debugger
+      fabricFactory.editFabric(fabric)
       .then((data) => {
-          // $scope.newFabric = data.data;
-          console.log('submitFabric', data);
-          $scope.showAllFabrics();
-          $scope.clearForm();
+        debugger;
+          console.log('updateFabric', data);
+          $state.go('fabrics.items');
         });
     };
 
     $scope.getOneFabric = function(fabricId) {
-      fabricFactory.getOneFabric('fabricId')
+      fabricFactory.getOneFabric(fabricId)
         .then((getOneFabric) => {
-          debugger
-         $scope.getOneFabric = getOneFabric.data;
-        });
-    };
-
-    $scope.showAllFabrics = function() {
-      // console.log('working?')
-      fabricFactory.getAllFabrics()
-        .then((fabric) => {
-          console.log('fabric', fabric);
-          // debugger;
-          $scope.fabrics = fabric.data;
+          console.log(getOneFabric.data);
+          $scope.fabric = getOneFabric.data;
         });
     };
 
     $scope.showInventoryTypes = function() {
       fabricFactory.getInventoryTypes()
         .then((inventoryTypes) => {
-          // debugger
           $scope.inventoryTypes = inventoryTypes.data;
         });
     };
@@ -60,9 +44,15 @@ fabricmuch.component('fabricEditComponent', {
         });
     };
 
+    $scope.showAllFabricTypes = function() {
+      fabricFactory.getAllFabricTypes()
+        .then((allFabricTypes) => {
+          $scope.allFabricTypes = allFabricTypes.data;
+        });
+    };
+
     $scope.clearForm = function() {
       $scope.fabric = {};
     }
-
   }
 });

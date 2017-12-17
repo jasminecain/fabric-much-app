@@ -47,8 +47,8 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   };
 
-  function editFabric(fabricId) {
-    return apiFactory.patch(`fabrics/${fabricId}`, fabricId)
+  function editFabric(fabric) {
+    return apiFactory.patch(`fabrics/${fabric.id}`, fabric)
       .then((data) => {
         return data;
       }, (error) => {

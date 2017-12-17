@@ -12,6 +12,7 @@ fabricmuch.component('fabricDetailComponent', {
     $scope.getFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
         .then((data) => {
+          debugger;
           console.log('OneFabric: ', data);
           $scope.fabric = data.data;
         });
