@@ -76,4 +76,4 @@ const fabricmuch = angular.module('FabricMuchApp', [
     },
     data: { requireAuth: true }
   });
-}])
+}]);

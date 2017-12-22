@@ -19,7 +19,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       .then(function(fabrics) {
         return fabrics;
       });
-  };
+  }
 
   function getInventoryTypes() {
     return apiFactory.get('inventory_types')
@@ -27,14 +27,14 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         // debugger
         return inventoryTypes;
       });
-  };
+  }
 
   function getAllFabricTypes() {
     return apiFactory.get('fabric_types')
       .then(function(allFabricTypes) {
         return allFabricTypes;
       });
-  };
+  }
 
   function addFabric(fabric) {
     return apiFactory.post('fabrics', { fabric })
@@ -45,7 +45,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         let errMsg = error.message;
         console.log('addFabErr', errCode, errMsg);
       });
-  };
+  }
 
   function editFabric(fabric) {
     return apiFactory.patch(`fabrics/${fabric.id}`, fabric)
@@ -56,7 +56,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         let errMsg = error.message;
         console.log('editFabricErr', errCode, errMsg);
       });
-  };
+  }
 
   function getOneFabric(fabricId) {
     return apiFactory.get(`fabrics/${fabricId}`, fabricId)
@@ -67,7 +67,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         let errMsg = error.message;
         console.log('getOneFabricErr', errCode, errMsg);
       });
-  };
+  }
 
   function deleteFabric(fabricId) {
     return apiFactory.destroy(`fabrics/${fabricId}`, fabricId)
@@ -78,20 +78,20 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         let errMsg = error.message;
         console.log('deleteFabricErr', errCode, errMsg);
       });
-  };
+  }
 
   function getStores() {
     return apiFactory.get('fabrics/stores')
       .then(function(stores) {
         return stores;
       });
-  };
+  }
 
   function getFabricTypes() {
     return apiFactory.get('fabrics/fabric_types')
       .then(function(fabricTypes) {
         return fabricTypes;
       });
+  }
 
-  };
 });

@@ -67,7 +67,7 @@ fabricmuch.component('fabricsComponent', {
 
     $scope.clearForm = function() {
       $scope.fabric = {};
-    }
+    };
 
     $scope.getStores = function() {
       fabricFactory.getStores()
@@ -87,7 +87,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.editFabric = function(fabricId) {
       fabricFactory.editFabric(fabricId)
         .then((res) => {
-          debugger
+          debugger;
           $scope.showAllFabrics();
         });
     };
@@ -96,14 +96,9 @@ fabricmuch.component('fabricsComponent', {
         debugger;
         fabricFactory.deleteFabric(fabricId)
         .then((res) => {
-          debugger
+          debugger;
           $scope.showAllFabrics();
         });
     };
-
-    $scope.toEditFabricView = function() {
-      $state.go('editFabric.view', fabricId);
-    };
-
   }
 });

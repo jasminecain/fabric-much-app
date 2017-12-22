@@ -22,7 +22,7 @@ module.exports = function(grunt) {
           esnext: true,
           debug: true,
           globalstrict: true,
-          globals: {'angular': true, 'fabricmuch': true}
+          globals: {'angular': true, 'fabricmuch': true, 'self': false}
         },
         files: ['app/**/*.js']
       },
