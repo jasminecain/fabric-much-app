@@ -8,7 +8,8 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     put,
     patch,
     post,
-    destroy
+    destroy,
+    getAuthToken
   };
 
   // getUserToken,

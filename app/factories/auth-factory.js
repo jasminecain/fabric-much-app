@@ -32,8 +32,8 @@ fabricmuch.factory('authFactory', function($http, apiFactory) {
   };
 
   // hit curl url resource
-  function submitLogin(formData) {
-    return apiFactory.post('authenticate', formData)
+  function submitLogin(authentication) {
+    return apiFactory.post('authenticate', authentication)
       .then(function(res) {
         storeUserData(res.data.auth_token);
         return res;
