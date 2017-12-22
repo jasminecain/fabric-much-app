@@ -20,7 +20,7 @@
     <td> {{ fabric.price }} </td>
     <td> {{ fabric.quantity }} </td>
     <td> {{ fabric.store }} </td>
-    <td><button type="button" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</button></td>
-    <td><button type="button" ng-click="deleteFabric(fabric.id)">Delete</button></td>
+    <td><a type="button" class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
+    <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
   </tr>
 </table>

@@ -1,7 +1,7 @@
 <h3 ng-init="init()">Fabric Inventory</h3>
-<div class="container col s12 m4 l8">
+<div class="container col s12 m4 l8>
   <h4>Add Inventory</h4>
-  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
+  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate ng-repeat="fabric in fabrics | filter : search>
     <div>
       <label>Fabric Name</label>
       <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
@@ -41,12 +41,14 @@
     </div>
 
     <br>
-    <button type="submit" class="button">Submit</button>
+    <button class="btn waves-effect cyan" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
   </form>
 </div>
 
 <h4>Current Inventory</h4>
-<table>
+<table class="bordered hoverable">
   <tr>
     <th>Fabric Name</th>
     <th>SKU#</th>
@@ -69,7 +71,7 @@
     <td> {{ fabric.quantity }} </td>
     <td> {{ fabric.store }} </td>
     <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
-    <td><button type="button" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</button></td>
-    <td><button type="button" ng-click="deleteFabric(fabric.id)">Delete</button></td>
+    <td><a type="button" class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
+    <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
   </tr>
 </table>
