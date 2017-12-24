@@ -24,6 +24,10 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     return $window.localStorage.getItem('fmUser').auth_token;
   }
 
+  function deleteAuthToken() {
+    $window.localStorage.removeItem('fmUser').auth_token;
+  }
+
   function isAuthenticated() {
     return apiFactory.get('users')
       .then(function(users) {

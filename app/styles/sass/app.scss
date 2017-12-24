@@ -8,6 +8,9 @@ main {
   flex: 1 0 auto;
 }
 
+.input-field input[type=search] {
+  height: 64px !important; /* or height of nav */
+}
 
 input.header-search-input {
   // display: block;

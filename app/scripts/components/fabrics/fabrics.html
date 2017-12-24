@@ -1,7 +1,7 @@
 <h3 ng-init="init()">Fabric Inventory</h3>
-<div class="container col s12 m4 l8>
+<div class="container col s12 m4 l8">
   <h4>Add Inventory</h4>
-  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate ng-repeat="fabric in fabrics | filter : search>
+  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
     <div>
       <label>Fabric Name</label>
       <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
@@ -42,8 +42,8 @@
 
     <br>
     <button class="btn waves-effect cyan" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
+      <i class="material-icons right">send</i>
+    </button>
   </form>
 </div>
 
