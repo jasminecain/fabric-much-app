@@ -2,7 +2,8 @@
 
 const fabricmuch = angular.module('FabricMuchApp', [
   'ui.router',
-  'ui.router.state.events'
+  'ui.router.state.events',
+  'ui.materialize'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

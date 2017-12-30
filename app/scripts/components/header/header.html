@@ -37,7 +37,8 @@
       <div class="col s6">
         <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="currentUser">
             <!-- ng-if="currentUser" -->
-          <li><a ui-sref="">Find Fabric Stores</a></li>
+          <li><a ui-sref="fabrics.items">Fabric Inventory</a></li>
+          <li><a ui-sref="storeFinder.view">Find Fabric Stores</a></li>
           <li><a ui-sref="profile.view">Profile</a></li>
           <li><a ng-click="logOut()">Log Out</a></li>
         </ul>

@@ -11,7 +11,7 @@
                    ng-model="formData.email"
                    required />
 
-            <div  >
+            <div>
               <input type="password"
                      name="password"
                      id="loginPassword"
@@ -23,7 +23,7 @@
             <button class="btn waves-effect cyan" type="submit" name="action">Log In
             </button>
             <div>
-              <a href="#" ng-click="showSignup()">Sign Up</a>
+              <a href="#" ng-if="!currentUser">Sign Up</a>
             </div>
           </div>
         </div>

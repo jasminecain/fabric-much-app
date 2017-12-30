@@ -21,6 +21,16 @@ fabricmuch.component('loginComponent', {
         });
     };
 
+    $scope.submitSignup = function(formData) {
+      authFactory.submitSignup(formData)
+        .then((res) => {
+          debugger;
+          if (res) {
+            $state.go('fabric.items');
+          }
+        });
+    };
+
     // $scope.logIn = () => {
     //   authFactory.logIn($scope.account)
     //     .then(() => {

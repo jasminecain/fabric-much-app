@@ -1,0 +1,43 @@
+<h4>Sign Up at Fabric Much</h4>
+<div class="form">
+  <div>
+    <form name="signupForm" id="signupForm" ng-submit="submitSignup(signupForm)" novalidate >
+      <div>
+        <div>
+          <input type="email"
+                 name="email"
+                 id="signupEmail"
+                 placeholder="Email"
+                 ng-model="signupForm.email"
+                 required />
+
+          <div class="item-input password-item">
+            <input type="password"
+                    name="password"
+                    id="login-password"
+                    placeholder="Password"
+                    ng-model="signupForm.password"
+                    autocorrect="off"
+                    autocapitalize="none"
+                    ng-show="!showPassword"
+                    required />
+
+            <input type="text"
+                    name="password-text"
+                    placeholder="Password"
+                    ng-model="signupForm.password"
+                    autocorrect="off"
+                    autocapitalize="none"
+                    ng-show="showPassword"
+                    required />
+          </div>
+
+          <button class="btn waves-effect cyan" type="submit" name="action">Sign Up
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>

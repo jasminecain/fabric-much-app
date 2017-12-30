@@ -25,16 +25,16 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     return $window.localStorage.getItem('fmUser').auth_token;
   }
 
-  function deleteAuthToken() {
-    return $window.localStorage.removeItem('fmUser').auth_token;
-  }
+  // function deleteAuthToken() {
+  //   return $window.localStorage.removeItem('fmUser').auth_token;
+  // }
 
-  function isAuthenticated() {
-    return apiFactory.get('users')
-      .then(function(users) {
-        return users;
-      });
-  }
+  // function isAuthenticated() {
+  //   return apiFactory.get('users')
+  //     .then(function(users) {
+  //       return users;
+  //     });
+  // }
 
   function submitSignup(userData) {
     return apiFactory.get('users')
@@ -59,18 +59,18 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
       });
   }
 
-  function getCurrentUser(users) {
-    return apiFactory.get('users')
-      .then(function(users) {
-        return users;
-      });
-  }
+  // function getCurrentUser(users) {
+  //   return apiFactory.get('users')
+  //     .then(function(users) {
+  //       return users;
+  //     });
+  // }
 
-  function authWithProvider(users) {
-    return apiFactory.get('users')
-      .then(function(users) {
-        return users;
-      });
-  }
+  // function authWithProvider(users) {
+  //   return apiFactory.get('users')
+  //     .then(function(users) {
+  //       return users;
+  //     });
+  // }
 
 });
