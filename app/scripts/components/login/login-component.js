@@ -12,7 +12,6 @@ fabricmuch.component('loginComponent', {
     // };
 
     $scope.submitLogin = function(formData) {
-      debugger;
       authFactory.submitLogin(formData)
         .then((res) => {
           debugger;

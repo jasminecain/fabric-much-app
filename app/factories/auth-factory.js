@@ -6,7 +6,8 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     submitLogin,
     submitSignup,
     storeUserData,
-    getAuthToken
+    getAuthToken,
+    logOut
 
   };
 
@@ -25,22 +26,13 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
   }
 
   function deleteAuthToken() {
-    $window.localStorage.removeItem('fmUser').auth_token;
+    return $window.localStorage.removeItem('fmUser').auth_token;
   }
 
   function isAuthenticated() {
     return apiFactory.get('users')
       .then(function(users) {
         return users;
-      });
-  }
-
-  // hit curl url resource
-  function submitLogin(authentication) {
-    return apiFactory.post('authenticate', authentication)
-      .then(function(res) {
-        storeUserData(res.data.auth_token);
-        return res;
       });
   }
 
@@ -51,10 +43,18 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
       });
   }
 
-  function logOut(userCreds) {
-    return apiFactory.get('users')
+  // hit curl url resource
+  function submitLogin(authentication) {
+    return apiFactory.post('authentications', authentication)
+      .then(function(res) {
+        storeUserData(res.data.auth_token);
+        return res;
+      });
+  }
+
+  function logOut() {
+    return apiFactory.destroy('authentications')
       .then(function(users) {
-        $window.localStorage.removeItem('fmUser');
         return users;
       });
   }
