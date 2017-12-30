@@ -12,9 +12,6 @@ fabricmuch.factory('apiFactory', function($q, $http, $window) {
     getAuthToken
   };
 
-  // getUserToken,
-  // getAuthToken,
-
   function getBaseUrl() {
     return 'http://localhost:3000/';
   }
@@ -24,18 +21,6 @@ fabricmuch.factory('apiFactory', function($q, $http, $window) {
       return JSON.parse($window.localStorage.getItem('fmUser')).authToken;
     }
   }
-
-  // function getUserToken() {
-  //   return $q((resolve, reject) => {
-  //     $http.get(`${self.getBaseUrl()} + items`, {
-  //       headers: {
-  //       'Authentication-Token': $window.localStorage.getItem('fmUser').authToken
-  //       }
-  //     }).then(function(results) {
-  //       resolve(results.data);
-  //     });
-  //   });
-  // }
 
   function call(opts, data) {
     let url = `${getBaseUrl()}${opts.uri}`;

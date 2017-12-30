@@ -75,5 +75,20 @@ const fabricmuch = angular.module('FabricMuchApp', [
       }
     },
     data: { requireAuth: true }
+  })
+
+  .state('storeFinder', {
+    abstract: true,
+    templateUrl: 'app/templates/pages/store-finder.html',
+  })
+
+  .state('storeFinder.view', {
+    url: '/storefinder',
+    views: {
+      'storefinder': {
+        component: 'storeFinderComponent'
+      }
+    },
+    data: { requireAuth: true }
   });
 }]);

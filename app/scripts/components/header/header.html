@@ -32,19 +32,12 @@
       </div>
 
       <div class="col s4">
-          <!-- col s4 offset-s4 -->
-        <form>
-          <div class="input-field">
-            <input type="search" id="search" required>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form>
       </div>
 
       <div class="col s6">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="currentUser">
             <!-- ng-if="currentUser" -->
+          <li><a ui-sref="">Find Fabric Stores</a></li>
           <li><a ui-sref="profile.view">Profile</a></li>
           <li><a ng-click="logOut()">Log Out</a></li>
         </ul>

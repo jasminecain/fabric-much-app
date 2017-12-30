@@ -1,11 +1,11 @@
-body {
+.site {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
+.site-content {
+  flex: 1;
 }
 
 .input-field input[type=search] {
@@ -44,7 +44,9 @@ main {
 
 
 .page-footer {
-  padding-top: 0px;
+  bottom: 0px;
+  // padding-top: 0px;
+  // position: absolute;
 }
 
 // .z-depth-2 {
