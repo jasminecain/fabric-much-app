@@ -12,12 +12,11 @@ fabricmuch.component('loginComponent', {
     // };
 
     $scope.submitLogin = function(formData) {
-      debugger
       authFactory.submitLogin(formData)
         .then((res) => {
-          debugger
+          debugger;
           if (res) {
-            $state.go('fabrics.items')
+            $state.go('fabrics.items');
           }
         });
     };

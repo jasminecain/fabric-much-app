@@ -13,7 +13,7 @@ fabricmuch.component('fabricEditComponent', {
     };
 
     $scope.updateFabric = function(fabric) {
-      debugger
+      debugger;
       fabricFactory.editFabric(fabric)
       .then((data) => {
         debugger;
@@ -53,6 +53,6 @@ fabricmuch.component('fabricEditComponent', {
 
     $scope.clearForm = function() {
       $scope.fabric = {};
-    }
+    };
   }
 });

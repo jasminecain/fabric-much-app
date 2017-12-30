@@ -1,6 +1,6 @@
 'use strict';
 
-fabricmuch.factory('apiFactory', function($q, $http) {
+fabricmuch.factory('apiFactory', function($q, $http, $window) {
 
   return {
     getBaseUrl,
@@ -16,30 +16,29 @@ fabricmuch.factory('apiFactory', function($q, $http) {
   // getAuthToken,
 
   function getBaseUrl() {
-    return 'http://localhost:3000/'
+    return 'http://localhost:3000/';
   }
 
   function getAuthToken() {
-    if (localStorage.getItem('fmUser')) {
-      return localStorage.getItem('fmUser').authentication_token;
+    if ($window.localStorage.getItem('fmUser')) {
+      return JSON.parse($window.localStorage.getItem('fmUser')).authToken;
     }
   }
 
-  function getUserToken() {
-    return $q((resolve, reject) => {
-      $http.get(`${self.getBaseUrl()} + items`, {
-        headers: {
-        'Authentication-Token': localStorage.getItem('fmUser').authToken
-        }
-      }).then(function(results) {
-        resolve(results.data);
-      });
-    });
-  };
+  // function getUserToken() {
+  //   return $q((resolve, reject) => {
+  //     $http.get(`${self.getBaseUrl()} + items`, {
+  //       headers: {
+  //       'Authentication-Token': $window.localStorage.getItem('fmUser').authToken
+  //       }
+  //     }).then(function(results) {
+  //       resolve(results.data);
+  //     });
+  //   });
+  // }
 
   function call(opts, data) {
     let url = `${getBaseUrl()}${opts.uri}`;
-    // debugger
 
     return $q((resolve, reject) => {
       $http({
@@ -59,7 +58,7 @@ fabricmuch.factory('apiFactory', function($q, $http) {
         reject(error);
       });
     });
-  };
+  }
 
   function get(uri, data) {
     return call({uri: uri, method: 'GET'}, data);
@@ -77,7 +76,7 @@ fabricmuch.factory('apiFactory', function($q, $http) {
     return call({ uri: uri, method: 'POST' }, data);
   }
 
-  function destroy(uri, data) {
+  function destroy(uri, data=null) {
     return call({uri: uri, method: 'DELETE'}, data);
   }
 });

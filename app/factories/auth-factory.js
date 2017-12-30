@@ -1,12 +1,13 @@
 'use strict';
 
-fabricmuch.factory('authFactory', function($http, apiFactory) {
+fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
 
   return {
     submitLogin,
     submitSignup,
     storeUserData,
-    getAuthToken
+    getAuthToken,
+    logOut
 
   };
 
@@ -17,56 +18,59 @@ fabricmuch.factory('authFactory', function($http, apiFactory) {
   // };
 
   function storeUserData(token) {
-    localStorage.setItem('fmUser', JSON.stringify({ authToken: token }));
+    $window.localStorage.setItem('fmUser', JSON.stringify({ authToken: token }));
   }
 
   function getAuthToken() {
-    return localStorage.getItem('fmUser').auth_token;
+    return $window.localStorage.getItem('fmUser').auth_token;
+  }
+
+  function deleteAuthToken() {
+    return $window.localStorage.removeItem('fmUser').auth_token;
   }
 
   function isAuthenticated() {
     return apiFactory.get('users')
       .then(function(users) {
         return users;
-      })
-  };
-
-  // hit curl url resource
-  function submitLogin(authentication) {
-    return apiFactory.post('authenticate', authentication)
-      .then(function(res) {
-        storeUserData(res.data.auth_token);
-        return res;
       });
-  };
+  }
 
   function submitSignup(userData) {
     return apiFactory.get('users')
       .then(function(users) {
         return users;
-      })
+      });
   }
 
-  function logOut(userCreds) {
-    return apiFactory.get('users')
+  // hit curl url resource
+  function submitLogin(authentication) {
+    return apiFactory.post('authentications', authentication)
+      .then(function(res) {
+        storeUserData(res.data.auth_token);
+        return res;
+      });
+  }
+
+  function logOut() {
+    return apiFactory.destroy('authentications')
       .then(function(users) {
-        localStorage.removeItem('fmUser');
         return users;
-      })
-  };
+      });
+  }
 
   function getCurrentUser(users) {
     return apiFactory.get('users')
       .then(function(users) {
         return users;
-      })
-  };
+      });
+  }
 
   function authWithProvider(users) {
     return apiFactory.get('users')
       .then(function(users) {
         return users;
-      })
-  };
+      });
+  }
 
 });
