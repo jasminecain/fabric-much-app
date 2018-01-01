@@ -15,7 +15,7 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
   }
 
   function getAuthToken() {
-    return JSON.parse($window.localStorage.getItem('fmUser').auth_token);
+    return JSON.parse($window.localStorage.getItem('fmUser')).auth_token;
   }
 
   function cleanUserObj(user) {
@@ -55,7 +55,7 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
   }
 
   function getCurrentUser() {
-    return JSON.parse($window.localStorage.getItem('fmUser').auth_token);
+    return JSON.parse($window.localStorage.getItem('fmUser')).auth_token;
   }
 
 });
