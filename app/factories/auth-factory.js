@@ -8,47 +8,42 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     storeUserData,
     getAuthToken,
     logOut
-
   };
 
-  // $scope.loginData = {
-  //   email: '',
-  //   password: '',
-  //   name: ''
-  // };
-
-  function storeUserData(token) {
-    $window.localStorage.setItem('fmUser', JSON.stringify({ authToken: token }));
+  function storeUserData(user) {
+    $window.localStorage.setItem('fmUser', JSON.stringify({ user: user }));
   }
 
   function getAuthToken() {
-    return $window.localStorage.getItem('fmUser').auth_token;
+    return JSON.parse($window.localStorage.getItem('fmUser').auth_token);
   }
 
-  // function deleteAuthToken() {
-  //   return $window.localStorage.removeItem('fmUser').auth_token;
-  // }
+  function cleanUserObj(user) {
+    // remove unnecessary properties
+    delete user.updated_at;
+    delete user.created_at;
+    delete user.password_digest;
+    return user;
+  }
 
-  // function isAuthenticated() {
-  //   return apiFactory.get('users')
-  //     .then(function(users) {
-  //       return users;
-  //     });
-  // }
-
-  function submitSignup(userData) {
-    return apiFactory.get('users')
-      .then(function(users) {
-        return users;
+  function submitSignup(user) {
+    return apiFactory.post('users', { user })
+      .then(function(user) {
+        user = cleanUserObj(user.data);
+        debugger
+        storeUserData(user);
+        return user;
       });
   }
 
   // hit curl url resource
   function submitLogin(authentication) {
     return apiFactory.post('authentications', authentication)
-      .then(function(res) {
-        storeUserData(res.data.auth_token);
-        return res;
+      .then(function(user) {
+        user = cleanUserObj(user.data);
+        debugger
+        storeUserData(user);
+        return user;
       });
   }
 
@@ -59,18 +54,8 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
       });
   }
 
-  // function getCurrentUser(users) {
-  //   return apiFactory.get('users')
-  //     .then(function(users) {
-  //       return users;
-  //     });
-  // }
-
-  // function authWithProvider(users) {
-  //   return apiFactory.get('users')
-  //     .then(function(users) {
-  //       return users;
-  //     });
-  // }
+  function getCurrentUser() {
+    return JSON.parse($window.localStorage.getItem('fmUser').auth_token);
+  }
 
 });

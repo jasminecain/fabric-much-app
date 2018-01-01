@@ -14,6 +14,7 @@ fabricmuch.component('headerComponent', {
           if(res) {
             $window.localStorage.removeItem('fmUser');
             $state.go('root');
+            // $route.reload();
           }
         });
     };
