@@ -22,7 +22,8 @@ fabricmuch.component('fabricsComponent', {
 
     $scope.submitFabric = function(formData) {
       // fabricForm.uid = user.uid;
-      // formData.user_id = 1
+      formData.user_id = 1
+      formData.user = { id: 1 }
 
       fabricFactory.addFabric(formData)
       .then((data) => {
@@ -72,6 +73,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.getStores = function() {
       fabricFactory.getStores()
         .then((stores) => {
+          console.log('stores', stores);
           $scope.stores = stores.data;
         });
     };

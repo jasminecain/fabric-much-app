@@ -8,8 +8,8 @@
     </div>
 
     <div>
-      <label>SKU#</label>
-      <input type="text" name="fabric_sku" placeholder="Sku number" ng-model="fabric.barcode" ng-minlength="2" required>
+      <label>Barcode number</label>
+      <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
     </div>
 
     <label ng-repeat="type in inventoryTypes">
@@ -18,12 +18,17 @@
 
   <!-- upload swatch -->
 
-    <div>
+    <div input-field>
+      <select ng-model="fabric.fabric_type_id"
+              ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+              material-select
+              watch
+              required>
+      </select>
       <label>Fabric Types</label>
-      <select ng-model="fabric.fabric_type_id" ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes" required></select>
     </div>
 
-  <!-- if input doesn't exist create one in database? -->
+    <!-- if input doesn't exist create one in database? -->
 
     <div>
       <label>Price</label>
@@ -35,9 +40,9 @@
       <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
     </div>
 
-    <div>
+    <div input-field>
+      <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
       <label>Store</label>
-      <select ng-model="fabric.store" ng-options="store for store in stores" required></select>
     </div>
 
     <br>
@@ -47,31 +52,49 @@
   </form>
 </div>
 
+<div class="row">
+  <div class="col s12 m4 l8">
+    <form>
+      <div class="input-field">
+        <input type="search" id="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <h4>Current Inventory</h4>
-<table class="bordered hoverable">
-  <tr>
-    <th>Fabric Name</th>
-    <th>SKU#</th>
-    <th>Inventory Type</th>
-    <th>Fabric Type</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Store</th>
-    <th>Fabric Details</th>
-    <th>Edit</th>
-    <th>Delete?</th>
-  </tr>
-  <tr ng-repeat="fabric in fabrics">
-    <td> {{ fabric.fabric_name }} </td>
-    <td> {{ fabric.barcode }} </td>
-    <!-- bolt, swatch or fabric -->
-    <td> {{  }} </td>
-    <td> {{ fabric.fabric_type.fabric_type }} </td>
-    <td> {{ fabric.price }} </td>
-    <td> {{ fabric.quantity }} </td>
-    <td> {{ fabric.store }} </td>
-    <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
-    <td><a class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
-    <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
-  </tr>
+<table class="highlight bordered responsive-table">
+  <thead>
+    <tr>
+      <th>Fabric Name</th>
+      <th>SKU#</th>
+      <th>Inventory Type</th>
+      <th>Fabric Type</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Store</th>
+      <th>Fabric Details</th>
+      <th>Edit</th>
+      <th>Delete?</th>
+    </tr>
+  </thead>
+
+  </tbody>
+    <tr ng-repeat="fabric in fabrics">
+      <td> {{ fabric.fabric_name }} </td>
+      <td> {{ fabric.barcode }} </td>
+      <!-- bolt, swatch or fabric -->
+      <td> {{  }} </td>
+      <td> {{ fabric.fabric_type.fabric_type }} </td>
+      <td> {{ fabric.price }} </td>
+      <td> {{ fabric.quantity }} </td>
+      <td> {{ fabric.store }} </td>
+      <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
+      <td><a class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
+      <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
+    </tr>
+  <tbody>
 </table>

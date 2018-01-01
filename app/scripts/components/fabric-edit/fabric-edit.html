@@ -7,8 +7,8 @@
   </div>
 
   <div class="input field">
-    <label>SKU#</label>
-    <input type="text" name="fabric_sku" placeholder="Sku number" ng-model="fabric.barcode" ng-minlength="2" required>
+    <label>Barcode number</label>
+    <input type="text" name="fabric_barcode" placeholder=Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
   </div>
 
   <label ng-repeat="type in inventoryTypes">
@@ -17,9 +17,14 @@
 
 <!-- upload swatch -->
 
-  <div>
+  <div input-field>
+    <select ng-model="fabric.fabric_type_id"
+            ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+            material-select
+            watch
+            required>
+    </select>
     <label>Fabric Types</label>
-    <select ng-model="fabric.fabric_type_id" ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes" required></select>
   </div>
 
 <!-- if input doesn't exist create one in database? -->
@@ -34,11 +39,11 @@
     <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
   </div>
 
-  <div>
+  <div input-field>
+    <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
     <label>Store</label>
-    <select ng-model="fabric.store" ng-options="store as store for store in stores" required></select>
   </div>
 
   <br>
-  <button type="submit" class="button">Update Fabric</button>
+  <button class="btn waves-effect cyan" type="submit" class="button">Update Fabric</button>
 </form>

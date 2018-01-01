@@ -2,7 +2,8 @@
 
 const fabricmuch = angular.module('FabricMuchApp', [
   'ui.router',
-  'ui.router.state.events'
+  'ui.router.state.events',
+  'ui.materialize'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -72,6 +73,21 @@ const fabricmuch = angular.module('FabricMuchApp', [
     views: {
       'profile': {
         component: 'profileViewComponent'
+      }
+    },
+    data: { requireAuth: true }
+  })
+
+  .state('storeFinder', {
+    abstract: true,
+    templateUrl: 'app/templates/pages/store-finder.html',
+  })
+
+  .state('storeFinder.view', {
+    url: '/storefinder',
+    views: {
+      'storefinder': {
+        component: 'storeFinderComponent'
       }
     },
     data: { requireAuth: true }

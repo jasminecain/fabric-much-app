@@ -10,14 +10,21 @@
 
   </head>
 
-  <body>
+  <body class="site">
+    <header></header>
+    <main class="site-content">
     <ui-view></ui-view>
-    <footer-component></footer-component>
+    </main>
+    <footer><footer-component></footer-component></footer>
+
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-router/release/stateEvents.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+
 
 
     <script type="text/javascript" src="app/app.js"></script>
@@ -30,13 +37,14 @@
     <script type="text/javascript" src="app/factories/fabrics-factory.js"></script>
 
     <!-- components -->
+    <script type="text/javascript" src="app/scripts/components/login/login-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/fabrics/fabrics-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/fabric-detail/fabric-detail-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/fabric-edit/fabric-edit-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/profile-view/profile-view-component.js"></script>
-    <script type="text/javascript" src="app/scripts/components/login/login-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/footer/footer-component.js"></script>
     <script type="text/javascript" src="app/scripts/components/header/header-component.js"></script>
+    <script type="text/javascript" src="app/scripts/components/store-finder/store-finder-component.js"></script>
     <!-- <script type="text/javascript" src="app/scripts/components/photo-gallery/photo-gallery-component.js"></script> -->
 
   </body>
