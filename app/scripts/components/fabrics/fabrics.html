@@ -56,7 +56,7 @@
   <div class="col s12 m4 l8">
     <form>
       <div class="input-field">
-        <input type="search" id="search" required>
+        <input type="search" id="search" ng-model="searchText" required>
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         <i class="material-icons">close</i>
       </div>
@@ -66,7 +66,7 @@
 
 
 <h4>Current Inventory</h4>
-<table class="highlight bordered responsive-table">
+<table id="searchTextResults" class="highlight bordered responsive-table">
   <thead>
     <tr>
       <th>Fabric Name</th>
@@ -83,7 +83,7 @@
   </thead>
 
   </tbody>
-    <tr ng-repeat="fabric in fabrics">
+    <tr ng-repeat="fabric in fabrics | filter:searchText">
       <td> {{ fabric.fabric_name }} </td>
       <td> {{ fabric.barcode }} </td>
       <!-- bolt, swatch or fabric -->
