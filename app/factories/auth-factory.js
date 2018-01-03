@@ -7,7 +7,8 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     submitSignup,
     storeUserData,
     getAuthToken,
-    logOut
+    logOut,
+    getCurrentUser
   };
 
   function storeUserData(user) {
@@ -15,13 +16,12 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
   }
 
   function getAuthToken() {
-    return JSON.parse($window.localStorage.getItem('fmUser')).auth_token;
+    return JSON.parse($window.localStorage.getItem('fmUser')).user.authentication_token;
   }
 
   function cleanUserObj(user) {
     // remove unnecessary properties
     delete user.updated_at;
-    delete user.created_at;
     delete user.password_digest;
     return user;
   }
@@ -55,7 +55,7 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
   }
 
   function getCurrentUser() {
-    return JSON.parse($window.localStorage.getItem('fmUser')).auth_token;
+    return JSON.parse($window.localStorage.getItem('fmUser')).user;
   }
 
 });
