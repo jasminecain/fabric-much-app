@@ -11,11 +11,9 @@ fabricmuch.component('headerComponent', {
       authFactory.logOut()
         .then((res) => {
           debugger;
-          if(res) {
-            $window.localStorage.removeItem('fmUser');
-            $state.go('root');
-            // $route.reload();
-          }
+          $window.localStorage.removeItem('fmUser');
+          $state.go('root');
+          // $route.reload();
         });
     };
 
