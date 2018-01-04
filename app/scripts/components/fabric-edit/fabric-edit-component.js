@@ -3,7 +3,7 @@
 fabricmuch.component('fabricEditComponent', {
 
   templateUrl: 'app/scripts/components/fabric-edit/fabric-edit.html',
-  controller: function($scope, fabricFactory, $state) {
+  controller: function($scope, fabricFactory, $state, Upload) {
 
     $scope.init = function() {
       $scope.getOneFabric($state.params.fabricId);
@@ -20,6 +20,23 @@ fabricmuch.component('fabricEditComponent', {
           console.log('updateFabric', data);
           $state.go('fabrics.items');
         });
+    };
+
+    $scope.uploadPhoto = function(file, fabric) {
+      if (file) {
+        Upload.base64DataUrl(file).then(function(base64) {
+          if (!fabric.fabric_image) {
+            fabric.fabric_image = [];
+          }
+
+          fabric.fabric_image.push(base64);
+        });
+      }
+    };
+
+    $scope.deletePhoto = function(formData, index) {
+      debugger;
+      fabric.fabric_image.splice(index, 1);
     };
 
     $scope.getOneFabric = function(fabricId) {

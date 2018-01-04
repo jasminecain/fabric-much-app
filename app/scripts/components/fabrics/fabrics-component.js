@@ -3,7 +3,7 @@
 fabricmuch.component('fabricsComponent', {
 
   templateUrl: 'app/scripts/components/fabrics/fabrics.html',
-  controller: function(fabricFactory, $scope, $state) {
+  controller: function(fabricFactory, $scope, $state, Upload) {
 
     // let user = authFactory.getCurrentUser();
 
@@ -21,18 +21,33 @@ fabricmuch.component('fabricsComponent', {
     // $scope.getFabricTypes = [];
 
     $scope.submitFabric = function(formData) {
+      debugger
       // fabricForm.uid = user.uid;
-      formData.user_id = 1
-      formData.user = { id: 1 }
+      // formData.user_id = 1
+      // formData.user = { id: 1 }
 
       fabricFactory.addFabric(formData)
-      .then((data) => {
+        .then((data) => {
           // $scope.newFabric = data.data;
           console.log('submitFabric', data);
           $scope.showAllFabrics();
           $scope.clearForm();
         });
     };
+
+    // $scope.uploadPhoto = function(file) {
+    //   if (file) {
+    //     Upload.base64DataUrl(file)
+    //       .then(function(base64) {
+    //         debugger
+    //         // if (!fabric.fabric_image) {
+    //         //   fabric.fabric_image = [];
+    //         // }
+
+    //         // fabric.fabric_image.push(base64);
+    //       });
+    //   }
+    // };
 
     $scope.showAllFabrics = function() {
       // console.log('working?')
@@ -102,5 +117,6 @@ fabricmuch.component('fabricsComponent', {
           $scope.showAllFabrics();
         });
     };
+
   }
 });

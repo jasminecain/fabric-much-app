@@ -3,7 +3,8 @@
 const fabricmuch = angular.module('FabricMuchApp', [
   'ui.router',
   'ui.router.state.events',
-  'ui.materialize'
+  'ui.materialize',
+  'ngFileUpload'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
