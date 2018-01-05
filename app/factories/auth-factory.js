@@ -30,7 +30,7 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     return apiFactory.post('users', { user })
       .then(function(user) {
         user = cleanUserObj(user.data);
-        debugger
+        debugger;
         storeUserData(user);
         return user;
       });
@@ -41,7 +41,7 @@ fabricmuch.factory('authFactory', function($http, apiFactory, $window) {
     return apiFactory.post('authentications', authentication)
       .then(function(user) {
         user = cleanUserObj(user.data);
-        debugger
+        debugger;
         storeUserData(user);
         return user;
       });

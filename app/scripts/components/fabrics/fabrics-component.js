@@ -3,7 +3,7 @@
 fabricmuch.component('fabricsComponent', {
 
   templateUrl: 'app/scripts/components/fabrics/fabrics.html',
-  controller: function(fabricFactory, $scope, $state) {
+  controller: function(fabricFactory, $scope, $state, Upload) {
 
     // let user = authFactory.getCurrentUser();
 
@@ -16,22 +16,32 @@ fabricmuch.component('fabricsComponent', {
       // $scope.deleteFabric();
     };
 
-    // let user = { user: 1 }
-
-    // $scope.getFabricTypes = [];
-
     $scope.submitFabric = function(formData) {
-      // fabricForm.uid = user.uid;
-      formData.user_id = 1
-      formData.user = { id: 1 }
-
-      fabricFactory.addFabric(formData)
-      .then((data) => {
-          // $scope.newFabric = data.data;
-          console.log('submitFabric', data);
-          $scope.showAllFabrics();
-          $scope.clearForm();
+      if (formData.fabric_image) {
+        // encode image to base64 then create new fabric record
+        Upload.base64DataUrl(formData.fabric_image)
+          .then(function(base64) {
+            $scope.createFabric();
         });
+
+        $scope.createFabric = function() {
+          debugger
+          fabricFactory.addFabric(formData)
+            .then((data) => {
+              console.log('New Fabric Response: ', data);
+              $scope.showAllFabrics();
+              $scope.clearForm();
+            });
+        }
+      } else {
+        fabricFactory.addFabric(formData)
+          .then((data) => {
+            // $scope.newFabric = data.data;
+            console.log('submitFabric', data);
+            $scope.showAllFabrics();
+            $scope.clearForm();
+          });
+      }
     };
 
     $scope.showAllFabrics = function() {
@@ -102,5 +112,6 @@ fabricmuch.component('fabricsComponent', {
           $scope.showAllFabrics();
         });
     };
+
   }
 });

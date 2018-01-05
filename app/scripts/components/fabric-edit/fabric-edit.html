@@ -8,14 +8,17 @@
 
   <div class="input field">
     <label>Barcode number</label>
-    <input type="text" name="fabric_barcode" placeholder=Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
+    <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
   </div>
 
-  <label ng-repeat="type in inventoryTypes">
-    <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
-  </label><br/>
-
+  <div>
+    <label ng-repeat="type in inventoryTypes">
+      <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
+    </label><br/>
+  </div>
 <!-- upload swatch -->
+  <!-- <i class="material-icons upload-photo" ngf-select="uploadPhoto($file, fabric)" accept="image/jpg, image/png">add_a_photo</i>
+  <i class="material-icons hover-display right" ng-click="deletePhoto(project, $index)">delete_forever</i> -->
 
   <div input-field>
     <select ng-model="fabric.fabric_type_id"
