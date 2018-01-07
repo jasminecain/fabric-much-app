@@ -57,53 +57,60 @@
     </button>
   </form>
 </div>
+<br>
+<br>
+<br>
 
-<div class="row">
-  <div class="col s12 m4 l8">
-    <form>
-      <div class="input-field">
-        <input type="search" id="search" ng-model="searchText" required>
-        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        <i class="material-icons">close</i>
-      </div>
-    </form>
-  </div>
+<div class=" container col s12 m4 l8">
+  <h4>Search Inventory</h4>
+  <form>
+    <div class="input-field">
+      <input type="search" id="search" ng-model="searchText" required>
+      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+      <i class="material-icons">close</i>
+    </div>
+  </form>
 </div>
+<br>
+<br>
+<br>
 
-<h4>Current Inventory</h4>
-<div>
-  <div class="col s12 m4 l8">
-    <table id="searchTextResults" class="highlight bordered responsive-table">
-      <thead>
-        <tr>
-          <th>Fabric Name</th>
-          <th>SKU#</th>
-          <th>Inventory Type</th>
-          <th>Fabric Type</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Store</th>
-          <th>Fabric Details</th>
-          <th>Edit</th>
-          <th>Delete?</th>
-        </tr>
-      </thead>
 
-      </tbody>
-        <tr ng-repeat="fabric in fabrics | filter:searchText">
-          <td> {{ fabric.fabric_name }} </td>
-          <td> {{ fabric.barcode }} </td>
-          <!-- bolt, swatch or fabric -->
-          <td> {{  }} </td>
-          <td> {{ fabric.fabric_type.fabric_type }} </td>
-          <td> {{ fabric.price }} </td>
-          <td> {{ fabric.quantity }} </td>
-          <td> {{ fabric.store }} </td>
-          <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
-          <td><a class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
-          <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
-        </tr>
-      <tbody>
-    </table>
-  </div>
+<div class=" container col s12 m4 l8">
+  <h4>Current Inventory</h4>
+  <table id="searchTextResults" class="highlight bordered responsive-table">
+    <thead>
+      <tr>
+        <th>Fabric Name</th>
+        <th>SKU#</th>
+        <th>Inventory Type</th>
+        <th>Fabric Type</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Store</th>
+        <th>Fabric Details</th>
+        <th>Edit</th>
+        <th>Delete?</th>
+      </tr>
+    </thead>
+
+    </tbody>
+      <tr ng-repeat="fabric in fabrics | filter:searchText">
+        <td> {{ fabric.fabric_name }} </td>
+        <td> {{ fabric.barcode }} </td>
+        <!-- bolt, swatch or fabric -->
+        <td > {{fabric.inventory_type_id}} </td>
+        <td> {{ fabric.fabric_type.fabric_type }} </td>
+        <td> {{ fabric.price }} </td>
+        <td> {{ fabric.quantity }} </td>
+        <td> {{ fabric.store }} </td>
+        <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
+        <td><a class="waves-effect cyan btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
+        <td><a type="button" class="waves-effect cyan btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
+      </tr>
+    <tbody>
+  </table>
 </div>
+<br>
+<br>
+
