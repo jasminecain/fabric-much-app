@@ -1,52 +1,56 @@
-<h3 ng-init="init()">Edit Inventory</h3>
-<h2>{{foo}}</h2>
-<form name="fabricForm" ng-submit="updateFabric(fabric)" novalidate>
-  <div class="input field">
-    <label for="fabric-name">Fabric Name</label>
-    <input id="fabric-name" type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
+<div class="row">
+  <div class="col s12 m4 l2">
+    <h3 ng-init="init()">Edit Inventory</h3>
+    <h2>{{foo}}</h2>
+    <form name="fabricForm" ng-submit="updateFabric(fabric)" novalidate>
+      <div class="input field">
+        <label for="fabric-name">Fabric Name</label>
+        <input id="fabric-name" type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
+      </div>
+
+      <div class="input field">
+        <label>Barcode number</label>
+        <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
+      </div>
+
+      <div>
+        <label ng-repeat="type in inventoryTypes">
+          <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
+        </label><br/>
+      </div>
+    <!-- upload swatch -->
+      <!-- <i class="material-icons upload-photo" ngf-select="uploadPhoto($file, fabric)" accept="image/jpg, image/png">add_a_photo</i>
+      <i class="material-icons hover-display right" ng-click="deletePhoto(project, $index)">delete_forever</i> -->
+
+      <div input-field>
+        <select ng-model="fabric.fabric_type_id"
+                ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+                material-select
+                watch
+                required>
+        </select>
+        <label>Fabric Types</label>
+      </div>
+
+    <!-- if input doesn't exist create one in database? -->
+
+      <div class="input field">
+        <label>Price</label>
+        <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
+      </div>
+
+      <div class="input field">
+        <label>Quantity</label>
+        <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
+      </div>
+
+      <div input-field>
+        <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
+        <label>Store</label>
+      </div>
+
+      <br>
+      <button class="btn waves-effect cyan" type="submit" class="button">Update Fabric</button>
+    </form>
   </div>
-
-  <div class="input field">
-    <label>Barcode number</label>
-    <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
-  </div>
-
-  <div>
-    <label ng-repeat="type in inventoryTypes">
-      <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
-    </label><br/>
-  </div>
-<!-- upload swatch -->
-  <!-- <i class="material-icons upload-photo" ngf-select="uploadPhoto($file, fabric)" accept="image/jpg, image/png">add_a_photo</i>
-  <i class="material-icons hover-display right" ng-click="deletePhoto(project, $index)">delete_forever</i> -->
-
-  <div input-field>
-    <select ng-model="fabric.fabric_type_id"
-            ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
-            material-select
-            watch
-            required>
-    </select>
-    <label>Fabric Types</label>
-  </div>
-
-<!-- if input doesn't exist create one in database? -->
-
-  <div class="input field">
-    <label>Price</label>
-    <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
-  </div>
-
-  <div class="input field">
-    <label>Quantity</label>
-    <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
-  </div>
-
-  <div input-field>
-    <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
-    <label>Store</label>
-  </div>
-
-  <br>
-  <button class="btn waves-effect cyan" type="submit" class="button">Update Fabric</button>
-</form>
+</div>
