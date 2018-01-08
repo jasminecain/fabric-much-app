@@ -1,6 +1,6 @@
 'use strict';
 
-fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
+fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
 
   return {
     getAllFabrics,
@@ -11,7 +11,10 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
     addFabric,
     getOneFabric,
     editFabric,
-    deleteFabric
+    deleteFabric,
+    addFabricWithImg,
+    editFabricWithImg,
+    cleanFabricObj,
   };
 
   function getAllFabrics() {
@@ -24,7 +27,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
   function getInventoryTypes() {
     return apiFactory.get('inventory_types')
       .then(function(inventoryTypes) {
-        // debugger
+        console.log('inventoryTypes:', inventoryTypes);
         return inventoryTypes;
       });
   }
@@ -47,9 +50,38 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
       });
   }
 
+  function addFabricWithImg(fabric) {
+    return Upload.upload({
+      method: 'POST',
+      url: 'http://localhost:3000/fabrics',
+      data: { fabric }
+    }).then((data) => {
+      return data;
+    }, (error) => {
+      let errCode = error.code;
+      let errMsg = error.message;
+      console.log('addFabErr', errCode, errMsg);
+    });
+  }
+
+  function cleanFabricObj(fabric) {
+    delete fabric.fabric_image;
+    // delete fabric.fabric_type.id;
+    // delete fabric.fabric_type.created_at;
+    // delete fabric.fabric_type.updated_at;
+    delete fabric.fabric_image_file_name;
+    delete fabric.fabric_image_content_type;
+    delete fabric.fabric_image_file_size;
+    delete fabric.fabric_image_updated_at;
+    delete fabric.fabric_type;
+    return fabric;
+  }
+
   function editFabric(fabric) {
     return apiFactory.patch(`fabrics/${fabric.id}`, fabric)
       .then((data) => {
+        fabric = cleanFabricObj(data.data);
+        console.log('editFabric', data.data);
         return data;
       }, (error) => {
         let errCode = error.code;
@@ -57,6 +89,21 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory) {
         console.log('editFabricErr', errCode, errMsg);
       });
   }
+
+  function editFabricWithImg(fabric) {
+    return Upload.upload({
+      method: 'PATCH',
+      url: `http://localhost:3000/fabrics/${fabric.id}`,
+      data: { fabric }
+    }).then((data) => {
+      return data;
+    }, (error) => {
+      let errCode = error.code;
+      let errMsg = error.message;
+      console.log('addFabErr', errCode, errMsg);
+    });
+  }
+
 
   function getOneFabric(fabricId) {
     return apiFactory.get(`fabrics/${fabricId}`, fabricId)

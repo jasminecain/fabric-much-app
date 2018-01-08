@@ -10,34 +10,56 @@ fabricmuch.component('fabricEditComponent', {
       $scope.showInventoryTypes();
       $scope.getStores();
       $scope.showAllFabricTypes();
+      $scope.showAllFabrics();
     };
+
+    // $scope.cleanFabricObj = function(fabric) {
+    //   delete fabric.fabric_type.id;
+    //   delete fabric.fabric_type.created_at;
+    //   delete fabric.fabric_type.updated_at;
+    //   delete fabric.fabric_image_file_name;
+    //   delete fabric.fabric_image_content_type;
+    //   delete fabric.fabric_image_file_size;
+    //   delete fabric.fabric_image_updated_at;
+    //   delete fabric.fabric_type;
+    //   return fabric;
+    // };
 
     $scope.updateFabric = function(fabric) {
-      debugger;
-      fabricFactory.editFabric(fabric)
-      .then((data) => {
+      if (fabric.fabric_image) {
+        fabricFactory.editFabricWithImg(fabric)
+          .then((fabric) => {
+            console.log('Update Fabric: ', fabric);
+            $state.go('fabrics.items');
+            // $scope.showAllFabrics();
+            // $scope.clearForm();
+          });
+      } else {
         debugger;
-          console.log('updateFabric', data);
-          $state.go('fabrics.items');
-        });
-    };
-
-    $scope.uploadPhoto = function(file, fabric) {
-      if (file) {
-        Upload.base64DataUrl(file).then(function(base64) {
-          if (!fabric.fabric_image) {
-            fabric.fabric_image = [];
+        fabricFactory.editFabric(fabric)
+          // fabricFactory.cleanFabricObj(fabric)
+          .then((data) => {
+            debugger;
+            console.log('updateFabric', data);
+            $state.go('fabrics.items');
+            });
           }
-
-          fabric.fabric_image.push(base64);
-        });
-      }
     };
 
-    $scope.deletePhoto = function(formData, index) {
-      debugger;
-      fabric.fabric_image.splice(index, 1);
-    };
+    // $scope.deletePhoto = function(formData, index) {
+    //   debugger;
+    //   fabric.fabric_image.splice(index, 1);
+    // };
+
+      $scope.showAllFabrics = function() {
+        // console.log('working?')
+        fabricFactory.getAllFabrics()
+          .then((fabric) => {
+            console.log('fabric', fabric);
+            // debugger;
+            $scope.fabrics = fabric.data;
+          });
+      };
 
     $scope.getOneFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
