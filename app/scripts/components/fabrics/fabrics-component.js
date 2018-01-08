@@ -24,7 +24,7 @@ fabricmuch.component('fabricsComponent', {
             $scope.clearForm();
           });
       } else {
-        fabricFactory.addFabric(formData)
+        fabricFactory.addFabric(fabric)
           .then((data) => {
             // $scope.newFabric = data.data;
             console.log('submitFabric', data);

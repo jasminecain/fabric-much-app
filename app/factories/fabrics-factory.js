@@ -13,7 +13,8 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     editFabric,
     deleteFabric,
     addFabricWithImg,
-    editFabricWithImg
+    editFabricWithImg,
+    cleanFabricObj,
   };
 
   function getAllFabrics() {
@@ -26,7 +27,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
   function getInventoryTypes() {
     return apiFactory.get('inventory_types')
       .then(function(inventoryTypes) {
-        // debugger
+        console.log('inventoryTypes:', inventoryTypes);
         return inventoryTypes;
       });
   }
@@ -63,9 +64,24 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     });
   }
 
+  function cleanFabricObj(fabric) {
+    delete fabric.fabric_image;
+    // delete fabric.fabric_type.id;
+    // delete fabric.fabric_type.created_at;
+    // delete fabric.fabric_type.updated_at;
+    delete fabric.fabric_image_file_name;
+    delete fabric.fabric_image_content_type;
+    delete fabric.fabric_image_file_size;
+    delete fabric.fabric_image_updated_at;
+    delete fabric.fabric_type;
+    return fabric;
+  }
+
   function editFabric(fabric) {
     return apiFactory.patch(`fabrics/${fabric.id}`, fabric)
       .then((data) => {
+        fabric = cleanFabricObj(data.data);
+        console.log('editFabric', data.data);
         return data;
       }, (error) => {
         let errCode = error.code;
@@ -87,6 +103,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
       console.log('addFabErr', errCode, errMsg);
     });
   }
+
 
   function getOneFabric(fabricId) {
     return apiFactory.get(`fabrics/${fabricId}`, fabricId)

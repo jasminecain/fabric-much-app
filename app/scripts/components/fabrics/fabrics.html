@@ -21,7 +21,7 @@
 
     <div>
       <label>Add Fabric Image</label>
-      <i class="material-icons file_upload" type="file" ngf-select ng-model="fabric.fabric_image" name="file" accept="image/jpg, image/png">add_a_photo</i>
+      <i class="material-icons file_upload" type="file" ngf-select ng-model="fabric.fabric_image" name="file" accept="image/jpg, image/png">add_a_photo</i>{{fabric.fabric_image}}
     </div>
 
     <div input-field>
@@ -84,6 +84,7 @@
         <th>Fabric Name</th>
         <th>SKU#</th>
         <th>Inventory Type</th>
+        <!-- <th ng-repeat="photo in fabric.fabric_image track by $index">Fabric Image</th> -->
         <th>Fabric Type</th>
         <th>Price</th>
         <th>Quantity</th>
@@ -99,7 +100,8 @@
         <td> {{ fabric.fabric_name }} </td>
         <td> {{ fabric.barcode }} </td>
         <!-- bolt, swatch or fabric -->
-        <td > {{fabric.inventory_type_id}} </td>
+        <td > {{fabric.inventory_types.inventory_type}} </td>
+        <!-- <td> <img materialboxed class="materialboxed responsive-img" ng-src="{{ fabric.img }}"> </td> -->
         <td> {{ fabric.fabric_type.fabric_type }} </td>
         <td> {{ fabric.price }} </td>
         <td> {{ fabric.quantity }} </td>
