@@ -18,7 +18,7 @@ fabricmuch.factory('apiFactory', function($q, $http, $window) {
 
   function getAuthToken() {
     if ($window.localStorage.getItem('fmUser')) {
-      return JSON.parse($window.localStorage.getItem('fmUser')).authToken;
+      return JSON.parse($window.localStorage.getItem('fmUser')).user.authentication_token;
     }
   }
 

@@ -20,7 +20,7 @@ fabricmuch.component('loginComponent', {
         .then((res) => {
           debugger;
           if (res) {
-            $state.go('root');
+            $state.go('fabrics.items');
             // $route.reload();
           }
         });

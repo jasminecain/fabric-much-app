@@ -1,69 +1,75 @@
-<div ng-hide="isLogin">
-  <h4>Log In into Fabric Much</h4>
-  <div class="form">
-    <div>
-      <form name="loginForm" id="loginForm" ng-submit="submitLogin(formData)" novalidate>
-        <div>
-          <div>
-            <input type="email"
-                    name="email"
-                    placeholder="Email"
-                    ng-model="formData.email"
-                    required />
-
-            <div>
-              <input type="password"
-                      name="password"
-                      placeholder="Password"
-                      ng-model="formData.password"
-                      required />
-            </div>
-
-            <button class="btn waves-effect cyan" type="submit">Log In</button>
-          </div>
-        </div>
-      </form>
+<div class="container col s12 m4 l8">
+  <div ng-hide="isLogin">
+    <h4>Log In into Fabric Much</h4>
+    <div class="form">
       <div>
-        <span ng-click="isLogin = !isLogin">Sign Up</span>
+        <form name="loginForm" id="loginForm" ng-submit="submitLogin(formData)" novalidate>
+          <div>
+            <div>
+              <input type="email"
+                      name="email"
+                      placeholder="Email"
+                      ng-model="formData.email"
+                      required />
+
+              <div>
+                <input type="password"
+                        name="password"
+                        placeholder="Password"
+                        ng-model="formData.password"
+                        required />
+              </div>
+
+              <button class="btn waves-effect cyan" type="submit">Log In</button>
+            </div>
+          </div>
+        </form>
+        <div>
+          <span ng-click="isLogin = !isLogin">Sign Up</span>
+        </div>
       </div>
     </div>
   </div>
+<!-- </div>
 </div>
 
-<div class="form" ng-hide="!isLogin">
-  <h4>Sign Up at Fabric Much</h4>
-  <div>
-    <form name="signForm" id="signForm" ng-submit="submitSignup(formData)" novalidate>
-      <div>
+<div class="row">
+<div class="col s12 m4 l2"> -->
+  <div class="form" ng-hide="!isLogin">
+    <h4>Sign Up at Fabric Much</h4>
+    <div>
+      <form name="signForm" id="signForm" ng-submit="submitSignup(formData)" novalidate>
         <div>
-          <input type="email"
-                 name="email"
-                 placeholder="Email"
-                 ng-model="formData.email"
-                 required />
-
           <div>
-            <input type="password"
-                   name="password"
-                   placeholder="Password"
-                   ng-model="formData.password"
-                   required />
+            <input type="email"
+                  name="email"
+                  placeholder="Email"
+                  ng-model="formData.email"
+                  required />
 
-            <!-- <input type="password"
-                   name="password_confirmation"
-                   placeholder="Password Confirmation"
-                   ng-model="formData.password_confirmation"
-                   required /> -->
+            <div>
+              <input type="password"
+                    name="password"
+                    placeholder="Password"
+                    ng-model="formData.password"
+                    required />
+
+              <!-- <input type="password"
+                    name="password_confirmation"
+                    placeholder="Password Confirmation"
+                    ng-model="formData.password_confirmation"
+                    required /> -->
+            </div>
+
+            <button class="btn waves-effect cyan" type="submit">Sign Up</button>
           </div>
-
-          <button class="btn waves-effect cyan" type="submit">Sign Up</button>
         </div>
+
+      </form>
+      <div>
+        <span ng-click="isLogin = !isLogin">Log In</span>
       </div>
 
-    </form>
-    <div>
-      <span ng-click="isLogin = !isLogin">Log In</span>
     </div>
-
   </div>
 </div>

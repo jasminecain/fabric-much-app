@@ -37,6 +37,7 @@ fabricmuch.component('fabricsComponent', {
         fabricFactory.addFabric(formData)
           .then((data) => {
             // $scope.newFabric = data.data;
+            debugger;
             console.log('submitFabric', data);
             $scope.showAllFabrics();
             $scope.clearForm();
@@ -105,10 +106,8 @@ fabricmuch.component('fabricsComponent', {
     };
 
     $scope.deleteFabric = function(fabricId) {
-        debugger;
         fabricFactory.deleteFabric(fabricId)
         .then((res) => {
-          debugger;
           $scope.showAllFabrics();
         });
     };
