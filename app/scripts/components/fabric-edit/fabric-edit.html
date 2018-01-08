@@ -17,9 +17,11 @@
         <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
       </label><br/>
     </div>
-  <!-- upload swatch -->
-    <!-- <i class="material-icons upload-photo" ngf-select="uploadPhoto($file, fabric)" accept="image/jpg, image/png">add_a_photo</i>
-    <i class="material-icons hover-display right" ng-click="deletePhoto(project, $index)">delete_forever</i> -->
+
+    <div>
+      <label>Add Fabric Image</label>
+      <i class="material-icons file_upload" type="file" ngf-select ng-model="fabric.fabric_image" name="file" accept="image/jpg, image/png">add_a_photo</i>
+    </div>
 
     <div input-field>
       <select ng-model="fabric.fabric_type_id"

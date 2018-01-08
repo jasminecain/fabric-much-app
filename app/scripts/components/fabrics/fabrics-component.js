@@ -13,31 +13,20 @@ fabricmuch.component('fabricsComponent', {
       $scope.showAllFabricTypes();
       $scope.getStores();
       $scope.getFabricTypes();
-      // $scope.deleteFabric();
     };
 
-    $scope.submitFabric = function(formData) {
-      if (formData.fabric_image) {
-        // encode image to base64 then create new fabric record
-        Upload.base64DataUrl(formData.fabric_image)
-          .then(function(base64) {
-            $scope.createFabric();
-        });
-
-        $scope.createFabric = function() {
-          debugger
-          fabricFactory.addFabric(formData)
-            .then((data) => {
-              console.log('New Fabric Response: ', data);
-              $scope.showAllFabrics();
-              $scope.clearForm();
-            });
-        }
+    $scope.submitFabric = function(fabric) {
+      if (fabric.fabric_image) {
+        fabricFactory.addFabricWithImg(fabric)
+          .then((fabric) => {
+            console.log('New Fabric Response: ', fabric);
+            $scope.showAllFabrics();
+            $scope.clearForm();
+          });
       } else {
         fabricFactory.addFabric(formData)
           .then((data) => {
             // $scope.newFabric = data.data;
-            debugger;
             console.log('submitFabric', data);
             $scope.showAllFabrics();
             $scope.clearForm();

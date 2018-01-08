@@ -10,34 +10,41 @@ fabricmuch.component('fabricEditComponent', {
       $scope.showInventoryTypes();
       $scope.getStores();
       $scope.showAllFabricTypes();
+      // $scope.getAllFabrics();
     };
 
     $scope.updateFabric = function(fabric) {
-      debugger;
-      fabricFactory.editFabric(fabric)
-      .then((data) => {
-        debugger;
-          console.log('updateFabric', data);
-          $state.go('fabrics.items');
-        });
-    };
-
-    $scope.uploadPhoto = function(file, fabric) {
-      if (file) {
-        Upload.base64DataUrl(file).then(function(base64) {
-          if (!fabric.fabric_image) {
-            fabric.fabric_image = [];
-          }
-
-          fabric.fabric_image.push(base64);
-        });
-      }
+      if (fabric.fabric_image) {
+        fabricFactory.editFabricWithImg(fabric)
+          .then((fabric) => {
+            console.log('New Fabric Response: ', fabric);
+            $scope.showAllFabrics();
+            $scope.clearForm();
+          });
+      } else {
+        fabricFactory.editFabric(fabric)
+          .then((data) => {
+            debugger;
+              console.log('updateFabric', data);
+              $state.go('fabrics.items');
+            });
+          };
     };
 
     $scope.deletePhoto = function(formData, index) {
       debugger;
       fabric.fabric_image.splice(index, 1);
     };
+
+      // $scope.showAllFabrics = function() {
+      //   // console.log('working?')
+      //   fabricFactory.getAllFabrics()
+      //     .then((fabric) => {
+      //       console.log('fabric', fabric);
+      //       // debugger;
+      //       $scope.fabrics = fabric.data;
+      //     });
+      // };
 
     $scope.getOneFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
