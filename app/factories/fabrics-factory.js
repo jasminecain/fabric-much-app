@@ -70,9 +70,6 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
 
   function cleanFabricObj(fabric) {
     delete fabric.fabric_image;
-    // delete fabric.fabric_type.id;
-    // delete fabric.fabric_type.created_at;
-    // delete fabric.fabric_type.updated_at;
     delete fabric.fabric_image_file_name;
     delete fabric.fabric_image_content_type;
     delete fabric.fabric_image_file_size;
@@ -104,6 +101,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
         'Authentication-Token': apiFactory.getAuthToken()
       }
     }).then((data) => {
+      fabric = cleanFabricObj(data.data);
       return data;
     }, (error) => {
       let errCode = error.code;

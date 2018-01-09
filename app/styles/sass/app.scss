@@ -42,6 +42,19 @@ nav {
   height: 64px !important;
 }
 
+img.responsive-img {
+  max-width: 50% !important;
+  height: auto;
+}
+
+img.responsive-img table-img initialized {
+  max-width: 30% !important;
+}
+
+.material-placeholder {
+  padding-right: 20px !important;
+}
+
 .auth-wrapper {
   margin-top: 175px;
 }

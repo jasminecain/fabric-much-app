@@ -37,10 +37,10 @@ fabricmuch.component('fabricsComponent', {
     $scope.showAllFabrics = function() {
       // console.log('working?')
       fabricFactory.getAllFabrics()
-        .then((fabric) => {
-          console.log('fabric', fabric);
-          // debugger;
-          $scope.fabrics = fabric.data;
+        .then((fabrics) => {
+          debugger;
+          console.log('fabrics', fabrics);
+          $scope.fabrics = fabrics.data;
         });
     };
 

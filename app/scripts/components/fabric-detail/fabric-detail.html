@@ -16,9 +16,8 @@
     <tr>
       <td> {{ fabric.fabric_name }} </td>
       <td> {{ fabric.barcode }} </td>
-      <!-- bolt, swatch or fabric -->
-      <td> {{  }} </td>
-      <td> {{ fabric.fabric_image }} </td>
+      <td> {{ fabric.inventory_types.inventory_type }} </td>
+      <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
       <td> {{ fabric.fabric_type.fabric_type }} </td>
       <td> {{ fabric.price }} </td>
       <td> {{ fabric.quantity }} </td>

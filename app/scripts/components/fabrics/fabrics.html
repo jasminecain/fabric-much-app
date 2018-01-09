@@ -96,7 +96,7 @@
                   <th>Fabric Name</th>
                   <th>SKU#</th>
                   <th>Inventory Type</th>
-                  <!-- <th ng-repeat="photo in fabric.fabric_image track by $index">Fabric Image</th> -->
+                  <th>Fabric Image</th>
                   <th>Fabric Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
@@ -111,9 +111,8 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <!-- bolt, swatch or fabric -->
                   <td > {{fabric.inventory_types.inventory_type}} </td>
-                  <!-- <td> <img materialboxed class="materialboxed responsive-img" ng-src="{{ fabric.img }}"> </td> -->
+                  <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
                   <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
                   <td> {{ fabric.quantity }} </td>
@@ -130,44 +129,3 @@
       </div>
     </div>
   </div>
-
-<!-- <div class=" container col s12 m4 l8">
-  <h4>Current Inventory</h4>
-  <table id="searchTextResults" class="highlight bordered responsive-table">
-    <thead>
-      <tr>
-        <th>Fabric Name</th>
-        <th>SKU#</th>
-        <th>Inventory Type</th> -->
-        <!-- <th ng-repeat="photo in fabric.fabric_image track by $index">Fabric Image</th> -->
-        <!-- <th>Fabric Type</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Store</th>
-        <th>Fabric Details</th>
-        <th>Edit</th>
-        <th>Delete?</th>
-      </tr>
-    </thead>
-
-    </tbody>
-      <tr ng-repeat="fabric in fabrics | filter:searchText">
-        <td> {{ fabric.fabric_name }} </td>
-        <td> {{ fabric.barcode }} </td> -->
-        <!-- bolt, swatch or fabric -->
-        <!-- <td > {{fabric.inventory_types.inventory_type}} </td> -->
-        <!-- <td> <img materialboxed class="materialboxed responsive-img" ng-src="{{ fabric.img }}"> </td> -->
-        <!-- <td> {{ fabric.fabric_type.fabric_type }} </td>
-        <td> {{ fabric.price }} </td>
-        <td> {{ fabric.quantity }} </td>
-        <td> {{ fabric.store }} </td>
-        <td><a ui-sref="fabricsDetail.page({ fabricId: fabric.id })">details</a></td>
-        <td><a class="waves-effect btn-color btn" ui-sref="editFabric.view({ fabricId: fabric.id })">Edit</a></td>
-        <td><a type="button" class="waves-effect btn-color btn" ng-click="deleteFabric(fabric.id)">Delete</a></td>
-      </tr>
-    <tbody>
-  </table>
-</div>
-<br>
-<br>
- -->
