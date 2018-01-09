@@ -36,6 +36,7 @@ fabricmuch.component('fabricEditComponent', {
           });
       } else {
         debugger;
+        delete fabric.fabric_image;
         fabricFactory.editFabric(fabric)
           // fabricFactory.cleanFabricObj(fabric)
           .then((data) => {

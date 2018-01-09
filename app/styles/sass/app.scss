@@ -1,3 +1,31 @@
+nav {
+  background-color: slateblue;
+}
+
+.sign-up {
+  padding-bottom: 10px;
+}
+
+.brand-logo, a.brand-logo {
+  font-family: 'Berkshire Swash', regular;
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+.logo-img {
+  border: 1px solid white;
+  border-radius: 12px;
+  margin-top: 4px;
+  width: 56px;
+}
+
+.signin-logo {
+  margin: 0px 398px;
+  padding-top: 39px;
+  padding-bottom: 20px;
+  width: 196px;
+}
+
 .site {
   display: flex;
   min-height: 100vh;
@@ -7,50 +35,65 @@
 .site-content {
   flex: 1;
   background-image: url("/app/assets/images/fabricbg.png");
-  background-color: #cccccc;
+  background-color: #ffffff;
 }
 
 .input-field input[type=search] {
-  height: 64px !important; /* or height of nav */
+  height: 64px !important;
 }
 
+.btn-color {
+  background-color: slateblue;
+}
 
-// input.header-search-input {
-//   display: block;
-//   padding: 8px 8px 8px 72px;
-//   width: 60%;
-//   background: rgba(255,255,255,0.3);
-//   height: 24px;
-//   -webkit-transition: all 200ms ease;
-//   transition: all 200ms ease;
-//   border: none;
-//   font-size: 16px;
-//   // appearance: textfield;
-//   font-weight: 400;
-//   outline: none;
-//   border-radius: 3px;
+.btn:hover, .btn-large:hover {
+  background-color: #657bbf ;
+}
+
+.profile-cont {
+  padding-top: 20px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 39%;
+  margin-bottom: 30px;
+}
+
+.card-wrapper {
+  text-align: center;
+}
+
+.p-padding {
+  padding: 5px 5px !important;
+}
+
+.meme-img {
+  margin: 0px 398px;
+  // padding-top: 39px;
+  padding-bottom: 20px;
+  width: 300px;
+}
+
+.quote {
+  font-family: 'Arvo', serif;
+  font-size: 20px;
+  padding-top: 20px;
+  margin: 0px 255px !important;
+}
+
+.word-pop {
+  font-family: 'Lily Script One', cursive;
+  margin: 0px 398px;
+}
+
+// .footer-purple {
+//   background: #657bbf !important;
 // }
-
-// .brand-logo {
-//   position: absolute;
-//   color: #fff;
-//   display: inline-block;
-//   font-size: 2.1rem;
-//   padding: 0;
-//   white-space: nowrap;
-// }
-
-// header .brand-logo img {
-//   width: 172px;
-// }
-
 
 .page-footer {
+  background-color: slateblue;
   bottom: 0px;
-  // padding-top: 0px;
-  // position: absolute;
+  // margin-top: 47px;
+  // padding-top: 10px
 }
-
-// .z-depth-2 {
-//   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-// }
