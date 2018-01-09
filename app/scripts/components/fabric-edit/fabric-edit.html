@@ -20,7 +20,9 @@
 
     <div>
       <label>Add Fabric Image</label>
-      <i class="material-icons file_upload" type="file" ngf-select ng-model="fabric.fabric_image" name="file" accept="image/jpg, image/png">add_a_photo</i>{{fabric.fabric_image}}
+      <i class="material-icons file_upload" type="file" ngf-select ng-model="fabric.fabric_image" name="file" accept="image/jpg, image/png">add_a_photo</i>{{fabric.fabric_image.name}}
+      <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}">
+      <!--  {{fabric.img}} -->
     </div>
 
     <div input-field>
@@ -51,7 +53,7 @@
     </div>
 
     <br>
-    <button class="btn waves-effect cyan" type="submit" class="button">Update Fabric</button>
+    <button class="btn waves-effect btn-color" type="submit" class="button">Update Fabric</button>
   </form>
 </div>
 <br>

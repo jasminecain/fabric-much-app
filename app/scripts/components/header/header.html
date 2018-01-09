@@ -1,23 +1,25 @@
 <nav>
-  <div class="nav-wrapper blue lighten-2">
+  <div class="nav-wrapper">
+    <div class="container">
 
-    <div class="row">
-      <div class="col s2">
-        <a href="#!" class="brand-logo">Fabric Much</a>
-      </div>
+      <div class="row">
+        <div class="col s2">
+          <img class="logo-img" src="app/assets/images/FabricMuch.png">
+          <a href="#!" class="brand-logo">FabricMuch</a>
+        </div>
 
-      <div class="col s4">
-      </div>
+        <div class="col s4">
+        </div>
 
-      <div class="col s6">
-        <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="currentUser">
-          <li><a ui-sref="fabrics.items">Fabric Inventory</a></li>
-          <li><a ui-sref="storeFinder.view">Find Fabric Stores</a></li>
-          <li><a ui-sref="profile.view">Profile</a></li>
-          <li><a ng-click="logOut()">Log Out</a></li>
-        </ul>
+        <div class="col s6">
+          <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="currentUser">
+            <li><a ui-sref="fabrics.items">Fabric Inventory</a></li>
+            <!-- <li><a ui-sref="storeFinder.view">Find Fabric Stores</a></li> -->
+            <li><a ui-sref="profile.view">Profile</a></li>
+            <li><a ng-click="logOut()">Log Out</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-
   </div>
 </nav>
