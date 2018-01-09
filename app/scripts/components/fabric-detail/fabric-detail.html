@@ -1,10 +1,11 @@
 <div class="container col s12 m4 l2">
-  <h4>Current Inventory</h4>
+  <h4>Fabric Detail </h4>
   <table>
     <tr ng-init="init()">
       <th>Fabric Name</th>
       <th>SKU#</th>
       <th>Inventory Type</th>
+      <th>Fabric Image</th>
       <th>Fabric Type</th>
       <th>Price</th>
       <th>Quantity</th>
@@ -17,6 +18,7 @@
       <td> {{ fabric.barcode }} </td>
       <!-- bolt, swatch or fabric -->
       <td> {{  }} </td>
+      <td> {{ fabric.fabric_image }} </td>
       <td> {{ fabric.fabric_type.fabric_type }} </td>
       <td> {{ fabric.price }} </td>
       <td> {{ fabric.quantity }} </td>

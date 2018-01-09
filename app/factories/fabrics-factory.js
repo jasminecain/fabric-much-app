@@ -54,7 +54,11 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     return Upload.upload({
       method: 'POST',
       url: 'http://localhost:3000/fabrics',
-      data: { fabric }
+      data: { fabric },
+      headers: {
+        // 'Authorization': 'Token token=' + link ,
+        'Authentication-Token': apiFactory.getAuthToken()
+      }
     }).then((data) => {
       return data;
     }, (error) => {
@@ -94,7 +98,11 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     return Upload.upload({
       method: 'PATCH',
       url: `http://localhost:3000/fabrics/${fabric.id}`,
-      data: { fabric }
+      data: { fabric },
+      headers: {
+        // 'Authorization': 'Token token=' + link ,
+        'Authentication-Token': apiFactory.getAuthToken()
+      }
     }).then((data) => {
       return data;
     }, (error) => {
