@@ -42,8 +42,6 @@
       <label>Fabric Types</label>
     </div>
 
-    <!-- if input doesn't exist create one in database? -->
-
     <div>
       <label>Price</label>
       <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
@@ -111,7 +109,7 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <td > {{fabric.inventory_types.inventory_type}} </td>
+                  <td > {{fabric.fabrics_inventory_types.inventory_type_id}} </td>
                   <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
                   <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>

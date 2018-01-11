@@ -4,7 +4,7 @@
     <tr ng-init="init()">
       <th>Fabric Name</th>
       <th>SKU#</th>
-      <th>Inventory Type</th>
+      <!-- <th>Inventory Type</th> -->
       <th>Fabric Image</th>
       <th>Fabric Type</th>
       <th>Price</th>
@@ -16,7 +16,7 @@
     <tr>
       <td> {{ fabric.fabric_name }} </td>
       <td> {{ fabric.barcode }} </td>
-      <td> {{ fabric.inventory_types.inventory_type }} </td>
+      <!-- <td> {{ fabric.inventory_types.inventory_type }} </td> -->
       <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
       <td> {{ fabric.fabric_type.fabric_type }} </td>
       <td> {{ fabric.price }} </td>

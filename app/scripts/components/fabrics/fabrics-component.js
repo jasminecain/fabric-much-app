@@ -38,7 +38,7 @@ fabricmuch.component('fabricsComponent', {
       // console.log('working?')
       fabricFactory.getAllFabrics()
         .then((fabrics) => {
-          debugger;
+          // debugger;
           console.log('fabrics', fabrics);
           $scope.fabrics = fabrics.data;
         });
@@ -89,7 +89,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.editFabric = function(fabricId) {
       fabricFactory.editFabric(fabricId)
         .then((res) => {
-          debugger;
+          // debugger;
           $scope.showAllFabrics();
         });
     };
