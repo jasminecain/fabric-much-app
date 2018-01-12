@@ -17,15 +17,14 @@ fabricmuch.component('fabricEditComponent', {
       if (typeof fabric.fabric_image === 'object') {
         fabricFactory.editFabricWithImg(fabric)
           .then((fabric) => {
-            console.log('Update Fabric: ', fabric);
+            // console.log('Update Fabric: ', fabric);
             $state.go('fabrics.items');
           });
       } else if (typeof fabric.fabric_image === 'string') {
         delete fabric.fabric_image;
         fabricFactory.editFabric(fabric)
           .then((data) => {
-            debugger;
-            console.log('updateFabric', data);
+            // console.log('updateFabric', data);
             $state.go('fabrics.items');
             });
           }

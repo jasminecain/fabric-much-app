@@ -1,88 +1,91 @@
-<br>
-<h3 class="container col s12 m4 l8" ng-init="init()">Fabric Inventory</h3>
-<div class="container col s12 m4 l8">
-  <h4>Add Inventory</h4>
-  <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
-    <div>
-      <label>Fabric Name</label>
-      <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
-    </div>
-
-    <div>
-      <label>Barcode number</label>
-      <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
-    </div>
-
-    <div>
-      <label ng-repeat="type in inventoryTypes">
-        <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
-      </label><br/>
-    </div>
-
-    <div>
-      <label>Add Fabric Image</label>
-      <i class="material-icons file_upload"
-         type="file"
-         ngf-select=""
-         ng-model="fabric.fabric_image"
-         name="file"
-         accept="image/jpg, image/png">
-         add_a_photo
-      </i>
-      {{fabric.fabric_image.name}}
-    </div>
-
-    <div input-field>
-      <select ng-model="fabric.fabric_type_id"
-              ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
-              material-select
-              watch
-              required>
-      </select>
-      <label>Fabric Types</label>
-    </div>
-
-    <!-- if input doesn't exist create one in database? -->
-
-    <div>
-      <label>Price</label>
-      <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
-    </div>
-
-    <div>
-      <label>Quantity</label>
-      <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
-    </div>
-
-    <div input-field>
-      <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
-      <label>Store</label>
-    </div>
-
-    <br>
-    <button class="btn waves-effect btn-color" type="submit" name="action">Submit
-      <i class="material-icons right">send</i>
-    </button>
-  </form>
-</div>
-<br>
-<br>
-<br>
-
 <div class=" container col s12 m4 l8">
-  <h4>Search Inventory</h4>
+  <!-- <h4>Search Inventory</h4> -->
   <form>
     <div class="input-field">
-      <input type="search" id="search" ng-model="searchText" required>
+      <input type="search" id="search" ng-model="searchText" placeholder="Search Inventory" required>
       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
       <i class="material-icons">close</i>
     </div>
   </form>
-</div>
-<br>
-<br>
-<br>
 
+  <h3>Fabric Inventory</h3>
+  <br>
+  <div class="row">
+    <div class="col s12">
+      <a class="btn waves-effect btn-color" data-target="addInventoryModal" modal>Add Inventory</a>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div id="addInventoryModal" class="modal" ng-init="init()">
+    <div class="modal-content">
+      <!-- <div class="container col s12 m4 l8"> -->
+        <h4>New Inventory</h4>
+        <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
+          <div>
+            <label>Fabric Name</label>
+            <input type="text" name="fabric_name" placeholder="Fabric Name" ng-model="fabric.fabric_name" ng-minlength="2" required>
+          </div>
+
+          <div>
+            <label>Barcode number</label>
+            <input type="text" name="fabric_barcode" placeholder="Barcode number" ng-model="fabric.barcode" ng-minlength="2" required>
+          </div>
+
+          <div>
+            <label ng-repeat="type in inventoryTypes">
+              <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
+            </label><br/>
+          </div>
+
+          <div>
+            <label>Add Fabric Image</label>
+            <i class="material-icons file_upload"
+              type="file"
+              ngf-select=""
+              ng-model="fabric.fabric_image"
+              name="file"
+              accept="image/jpg, image/png">
+              add_a_photo
+            </i>
+            {{fabric.fabric_image.name}}
+          </div>
+
+          <div input-field>
+            <select ng-model="fabric.fabric_type_id"
+                    ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+                    material-select
+                    watch
+                    required>
+            </select>
+            <label>Fabric Types</label>
+          </div>
+
+          <div>
+            <label>Price</label>
+            <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
+          </div>
+
+          <div>
+            <label>Quantity</label>
+            <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
+          </div>
+
+          <div input-field>
+            <select ng-model="fabric.store" ng-options="store for store in stores" material-select watch required></select>
+            <label>Store</label>
+          </div>
+
+          <br>
+          <button class="btn waves-effect btn-color" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
 
 <div class="container col s12 m4 l8">
     <div class="row">
@@ -111,7 +114,7 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <td > {{fabric.inventory_types.inventory_type}} </td>
+                  <td > {{fabric.fabrics_inventory_types.inventory_type_id}} </td>
                   <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
                   <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
