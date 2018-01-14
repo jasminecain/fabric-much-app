@@ -17,7 +17,7 @@ grunt
 ```
 ### Staging
 
-You'll need a server to run Bobbin in your browser, if you don't have one installed, [http-server](https://www.npmjs.com/package/http-server) is a quick option.
+You'll need a server to run FabricMuch in your browser, if you don't have one installed, [http-server](https://www.npmjs.com/package/http-server) is a quick option.
 
 ```bash
 npm install --save http-server
@@ -26,5 +26,6 @@ Then open a new terminal tab and run:
 
 ```bash
 hs -o
+```
 
 This app also needs the [FabricMuch API](https://github.com/jasmineq/fabric-much-api) in order for it to run.
