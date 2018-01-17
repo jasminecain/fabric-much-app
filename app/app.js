@@ -4,7 +4,8 @@ const fabricmuch = angular.module('FabricMuchApp', [
   'ui.router',
   'ui.router.state.events',
   'ui.materialize',
-  'ngFileUpload'
+  'ngFileUpload',
+  'quagga'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
