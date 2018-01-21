@@ -41,11 +41,11 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
 
   function addFabric(fabric) {
     return apiFactory.post('fabrics', { fabric })
-      .then((data) => {
-        return data;
-      }, (error) => {
-        let errCode = error.code;
-        let errMsg = error.message;
+    .then((data) => {
+      return data;
+    }, (error) => {
+      let errCode = error.code;
+      let errMsg = error.message;
         console.log('addFabErr', errCode, errMsg);
       });
   }
