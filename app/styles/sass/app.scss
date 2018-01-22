@@ -42,12 +42,19 @@ nav {
   height: 64px !important;
 }
 
+[type="radio"]:not(:checked)+label,
+[type="radio"]:checked+label {
+  cursor: default;
+}
+
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   bottom: 25px;
-  left: unset;
-  margin-left: 6px;
-  position: absolute;
+  cursor: pointer;
+  left: 22px;
+  margin-left: 1px;
+  position: relative;
+  top: 0;
   z-index: 1;
 }
 
