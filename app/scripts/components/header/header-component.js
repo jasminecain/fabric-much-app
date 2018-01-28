@@ -10,7 +10,6 @@ fabricmuch.component('headerComponent', {
     $scope.logOut = function() {
       authFactory.logOut()
         .then((res) => {
-          debugger;
           $window.localStorage.removeItem('fmUser');
           $state.go('root');
           // $route.reload();
