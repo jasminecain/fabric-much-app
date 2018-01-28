@@ -115,8 +115,8 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <td > {{fabric.inventory_type}} </td>
-                  <td> <img materialboxed class="responsive-img table-img" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
+                  <td > {{fabric.inventory_type.inventory_type}} </td>
+                  <td> <img materialboxed class="responsive-img table-img" width="100%" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
                   <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
                   <td> {{ fabric.quantity }} </td>
