@@ -35,7 +35,7 @@
 
           <div>
             <span ng-repeat="type in inventoryTypes">
-              <input name="inventory_type" type="radio" ng-model="fabric.inventory_type" value="{{type.id}}" required/>
+              <input name="inventory_type" type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}" required/>
               <label for="inventory_type">{{type.inventory_type}}</label>
             </span>
           </div>
@@ -115,7 +115,7 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <td > {{fabric.inventory_types}} </td>
+                  <td > {{fabric.inventory_type.inventory_type}} </td>
                   <td> <img materialboxed class="responsive-img table-img" width="100%" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
                   <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
