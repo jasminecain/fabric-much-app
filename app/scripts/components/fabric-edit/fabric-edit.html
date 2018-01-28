@@ -13,9 +13,10 @@
     </div>
 
     <div>
-      <label ng-repeat="type in inventoryTypes">
-        <input type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}">{{type.inventory_type}}
-      </label><br/>
+      <span ng-repeat="type in inventoryTypes">
+        <input name="inventory_type" type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}" required/>
+        <label for="inventory_type">{{type.inventory_type}}</label>
+      </span>
     </div>
 
     <div>
