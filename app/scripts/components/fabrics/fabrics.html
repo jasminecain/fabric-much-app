@@ -1,5 +1,4 @@
 <div class=" container col s12 m4 l8">
-  <!-- <h4>Search Inventory</h4> -->
   <form>
     <div class="input-field">
       <input type="search" id="search" ng-model="searchText" placeholder="Search Inventory" required>
@@ -20,7 +19,6 @@
 
   <div id="addInventoryModal" class="modal" ng-init="init()">
     <div class="modal-content">
-      <!-- <div class="container col s12 m4 l8"> -->
         <h4>New Inventory</h4>
         <form name="fabricForm" ng-submit="submitFabric(fabric)" novalidate>
           <div>
@@ -79,11 +77,10 @@
           </div>
 
           <br>
-          <button class="btn waves-effect btn-color" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
+          <button class="btn waves-effect btn-color modal-close" type="submit" name="action">Submit
+            <i class="material-icons right modal-close">send</i>
           </button>
         </form>
-      <!-- </div> -->
     </div>
   </div>
 </div>

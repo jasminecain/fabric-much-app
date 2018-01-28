@@ -8,7 +8,6 @@ fabricmuch.component('loginComponent', {
     $scope.submitLogin = function(formData) {
       authFactory.submitLogin(formData)
         .then((res) => {
-          debugger;
           if (res) {
             $state.go('fabrics.items');
           }
@@ -18,7 +17,6 @@ fabricmuch.component('loginComponent', {
     $scope.submitSignup = function(formData) {
       authFactory.submitSignup(formData)
         .then((res) => {
-          debugger;
           if (res) {
             $state.go('fabrics.items');
             // $route.reload();

@@ -15,7 +15,6 @@ fabricmuch.component('fabricDetailComponent', {
     $scope.getFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
         .then((data) => {
-          // debugger;
           console.log('fabricDetail: ', data);
           $scope.fabric = data.data;
 
@@ -25,7 +24,6 @@ fabricmuch.component('fabricDetailComponent', {
     $scope.deleteFabric = function(fabricId) {
       fabricFactory.deleteFabric(fabricId)
       .then((fabricId) => {
-        // debugger;
         $state.go('fabrics.items');
       });
   };
