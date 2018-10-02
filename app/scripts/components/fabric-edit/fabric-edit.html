@@ -26,8 +26,8 @@
     </div>
 
     <div input-field>
-      <select ng-model="fabric.fabric_type_id"
-              ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+      <select ng-model="fabric.fabric_type"
+              ng-options="fabricType.fabric_type as fabricType.fabric_type for fabricType in allFabricTypes"
               material-select
               watch
               required>
