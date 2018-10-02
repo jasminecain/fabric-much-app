@@ -52,8 +52,8 @@
           </div>
 
           <div input-field>
-            <select ng-model="fabric.fabric_type_id"
-                    ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+            <select ng-model="fabric.fabric_type"
+                    ng-options="fabricType.fabric_type as fabricType.fabric_type for fabricType in allFabricTypes"
                     material-select
                     watch
                     required>
@@ -63,12 +63,12 @@
 
           <div>
             <label>Price</label>
-            <input type="text" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
+            <input type="number" name="fabric_price" placeholder="Fabric Price" ng-model="fabric.price" ng-minlength="2" required>
           </div>
 
           <div>
             <label>Quantity</label>
-            <input type="text" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="2" required>
+            <input type="number" name="fabric_quantity" placeholder="Fabric Quantity" ng-model="fabric.quantity" ng-minlength="1" required>
           </div>
 
           <div input-field>
@@ -114,7 +114,7 @@
                   <td> {{ fabric.barcode }} </td>
                   <td > {{fabric.inventory_type.inventory_type}} </td>
                   <td> <img materialboxed class="responsive-img table-img" width="100%" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
-                  <td> {{ fabric.fabric_type.fabric_type }} </td>
+                  <td> {{ fabric.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
                   <td> {{ fabric.quantity }} </td>
                   <td> {{ fabric.store }} </td>

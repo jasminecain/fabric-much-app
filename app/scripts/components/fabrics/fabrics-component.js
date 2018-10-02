@@ -64,7 +64,7 @@ fabricmuch.component('fabricsComponent', {
     };
 
     $scope.clearForm = function() {
-      $scope.fabric = {};
+      $scope.fabric = null;
     };
 
     $scope.getStores = function() {
