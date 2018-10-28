@@ -27,7 +27,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
   function getInventoryTypes() {
     return apiFactory.get('inventory_types')
       .then(function(inventoryTypes) {
-        console.log('inventoryTypes:', inventoryTypes);
+        // console.log('inventoryTypes:', inventoryTypes);
         return inventoryTypes;
       });
   }
@@ -46,14 +46,15 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     }, (error) => {
       let errCode = error.code;
       let errMsg = error.message;
-        console.log('addFabErr', errCode, errMsg);
+        // console.log('addFabErr', errCode, errMsg);
       });
   }
 
   function addFabricWithImg(fabric) {
     return Upload.upload({
       method: 'POST',
-      url: 'http://localhost:3000/fabrics',
+      // url: 'http://localhost:3000/fabrics',
+      url: 'https://git.heroku.com/fabric-much-api.git/fabrics'
       data: { fabric },
       headers: {
         // 'Authorization': 'Token token=' + link ,
@@ -64,7 +65,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     }, (error) => {
       let errCode = error.code;
       let errMsg = error.message;
-      console.log('addFabErr', errCode, errMsg);
+      // console.log('addFabErr', errCode, errMsg);
     });
   }
 
@@ -82,19 +83,20 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     return apiFactory.patch(`fabrics/${fabric.id}`, fabric)
       .then((data) => {
         fabric = cleanFabricObj(data.data);
-        console.log('editFabric', data.data);
+        // console.log('editFabric', data.data);
         return data;
       }, (error) => {
         let errCode = error.code;
         let errMsg = error.message;
-        console.log('editFabricErr', errCode, errMsg);
+        // console.log('editFabricErr', errCode, errMsg);
       });
   }
 
   function editFabricWithImg(fabric) {
     return Upload.upload({
       method: 'PATCH',
-      url: `http://localhost:3000/fabrics/${fabric.id}`,
+      // url: `http://localhost:3000/fabrics/${fabric.id}`,
+      url: `https://git.heroku.com/fabric-much-api.git/fabrics/${fabric.id}`,
       data: { fabric },
       headers: {
         // 'Authorization': 'Token token=' + link ,
@@ -106,7 +108,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     }, (error) => {
       let errCode = error.code;
       let errMsg = error.message;
-      console.log('addFabErr', errCode, errMsg);
+      // console.log('addFabErr', errCode, errMsg);
     });
   }
 
@@ -118,7 +120,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
       }, (error) => {
         let errCode = error.code;
         let errMsg = error.message;
-        console.log('getOneFabricErr', errCode, errMsg);
+        // console.log('getOneFabricErr', errCode, errMsg);
       });
   }
 
@@ -129,7 +131,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
       }, (error) => {
         let errCode = error.code;
         let errMsg = error.message;
-        console.log('deleteFabricErr', errCode, errMsg);
+        // console.log('deleteFabricErr', errCode, errMsg);
       });
   }
 

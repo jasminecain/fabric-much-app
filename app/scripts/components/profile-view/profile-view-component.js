@@ -8,7 +8,7 @@ fabricmuch.component('profileViewComponent', {
 
     $scope.init = function() {
       $scope.user = authFactory.getCurrentUser();
-      console.log($scope.user);
+      // console.log($scope.user);
     };
 
     $scope.logOut = (user) => {

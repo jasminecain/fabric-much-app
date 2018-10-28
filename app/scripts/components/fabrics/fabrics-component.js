@@ -19,7 +19,7 @@ fabricmuch.component('fabricsComponent', {
       if (fabric.fabric_image) {
         fabricFactory.addFabricWithImg(fabric)
           .then((fabric) => {
-            console.log('New Fabric Response: ', fabric);
+            // console.log('New Fabric Response: ', fabric);
             $scope.showAllFabrics();
             $scope.clearForm();
           });
@@ -27,7 +27,7 @@ fabricmuch.component('fabricsComponent', {
         fabricFactory.addFabric(fabric)
           .then((data) => {
             // $scope.newFabric = data.data;
-            console.log('submitFabric', data);
+            // console.log('submitFabric', data);
             $scope.showAllFabrics();
             $scope.clearForm();
           });
@@ -37,7 +37,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.showAllFabrics = function() {
       fabricFactory.getAllFabrics()
         .then((fabrics) => {
-          console.log('fabrics', fabrics);
+          // console.log('fabrics', fabrics);
           $scope.fabrics = fabrics.data;
         });
     };
@@ -70,7 +70,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.getStores = function() {
       fabricFactory.getStores()
         .then((stores) => {
-          console.log('stores', stores);
+          // console.log('stores', stores);
           $scope.stores = stores.data;
         });
     };
@@ -78,7 +78,7 @@ fabricmuch.component('fabricsComponent', {
     $scope.getFabricTypes = function() {
       fabricFactory.getFabricTypes()
         .then((fabricTypes) => {
-          console.log('fabricTypes', fabricTypes);
+          // console.log('fabricTypes', fabricTypes);
           $scope.fabricTypes = fabricTypes.data;
         });
     };

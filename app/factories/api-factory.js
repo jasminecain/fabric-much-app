@@ -13,7 +13,8 @@ fabricmuch.factory('apiFactory', function($q, $http, $window) {
   };
 
   function getBaseUrl() {
-    return 'http://localhost:3000/';
+    // return 'http://localhost:3000/';
+    return 'https://git.heroku.com/fabric-much-api.git/';
   }
 
   function getAuthToken() {
