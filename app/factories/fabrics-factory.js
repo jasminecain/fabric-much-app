@@ -54,7 +54,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
     return Upload.upload({
       method: 'POST',
       // url: 'http://localhost:3000/fabrics',
-      url: 'https://git.heroku.com/fabric-much-api.git/fabrics'
+      url: 'https://git.heroku.com/fabric-much-api.git/fabrics',
       data: { fabric },
       headers: {
         // 'Authorization': 'Token token=' + link ,
