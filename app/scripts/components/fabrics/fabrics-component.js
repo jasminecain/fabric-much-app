@@ -16,6 +16,7 @@ fabricmuch.component('fabricsComponent', {
     };
 
     $scope.submitFabric = function(fabric) {
+      debugger;
       if (fabric.fabric_image) {
         fabricFactory.addFabricWithImg(fabric)
           .then((fabric) => {
@@ -36,7 +37,7 @@ fabricmuch.component('fabricsComponent', {
 
     $scope.showAllFabrics = function() {
       fabricFactory.getAllFabrics()
-        .then((fabrics) => {
+      .then((fabrics) => {
           // console.log('fabrics', fabrics);
           $scope.fabrics = fabrics.data;
         });
@@ -59,7 +60,8 @@ fabricmuch.component('fabricsComponent', {
     $scope.getOneFabric = function(fabricId) {
       fabricFactory.getOneFabric('fabricId')
         .then((getOneFabric) => {
-         $scope.getOneFabric = getOneFabric.data;
+          // console.log(getOneFabric.data);
+          $scope.getOneFabric = getOneFabric.data;
         });
     };
 

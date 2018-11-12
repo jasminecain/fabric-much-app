@@ -16,7 +16,7 @@ fabricmuch.component('fabricEditComponent', {
     $scope.updateFabric = function(fabric) {
       if (typeof fabric.fabric_image === 'object') {
         fabricFactory.editFabricWithImg(fabric)
-          .then((fabric) => {
+        .then((fabric) => {
             // console.log('Update Fabric: ', fabric);
             $state.go('fabrics.items');
           });
@@ -24,7 +24,7 @@ fabricmuch.component('fabricEditComponent', {
         delete fabric.fabric_image;
         fabricFactory.editFabric(fabric)
           .then((data) => {
-            // console.log('updateFabric', data);
+            console.log('updateFabric', data);
             $state.go('fabrics.items');
             });
           }
@@ -38,7 +38,7 @@ fabricmuch.component('fabricEditComponent', {
       $scope.showAllFabrics = function() {
         fabricFactory.getAllFabrics()
           .then((fabric) => {
-            console.log('fabric', fabric);
+            // console.log('fabric', fabric);
             $scope.fabrics = fabric.data;
           });
       };
@@ -46,7 +46,7 @@ fabricmuch.component('fabricEditComponent', {
     $scope.getOneFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
         .then((getOneFabric) => {
-          console.log(getOneFabric.data);
+          // console.log(getOneFabric.data);
           $scope.fabric = getOneFabric.data;
         });
     };
