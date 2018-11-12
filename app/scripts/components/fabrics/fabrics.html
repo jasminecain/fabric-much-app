@@ -52,8 +52,8 @@
           </div>
 
           <div input-field>
-            <select ng-model="fabric.fabric_type"
-                    ng-options="fabricType.fabric_type as fabricType.fabric_type for fabricType in allFabricTypes"
+            <select ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
+                    ng-model="fabric.fabric_type_id"
                     material-select
                     watch
                     required>
@@ -112,9 +112,9 @@
                 <tr ng-repeat="fabric in fabrics | filter:searchText">
                   <td> {{ fabric.fabric_name }} </td>
                   <td> {{ fabric.barcode }} </td>
-                  <td > {{fabric.inventory_type.inventory_type}} </td>
+                  <td > {{ fabric.inventory_type.inventory_type }} </td>
                   <td> <img materialboxed class="responsive-img table-img" width="100%" ng-src="http://localhost:3000{{ fabric.fabric_image }}"> </td>
-                  <td> {{ fabric.fabric_type }} </td>
+                  <td> {{ fabric.fabric_type.fabric_type }} </td>
                   <td> {{ fabric.price }} </td>
                   <td> {{ fabric.quantity }} </td>
                   <td> {{ fabric.store }} </td>
