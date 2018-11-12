@@ -9,13 +9,13 @@ fabricmuch.component('fabricDetailComponent', {
 
     $scope.init = function() {
       $scope.getFabric($scope.fabricId);
-      console.log('$scope.fabricId: ', $scope.fabricId);
+      // console.log('$scope.fabricId: ', $scope.fabricId);
     };
 
     $scope.getFabric = function(fabricId) {
       fabricFactory.getOneFabric(fabricId)
         .then((data) => {
-          console.log('fabricDetail: ', data);
+          // console.log('fabricDetail: ', data);
           $scope.fabric = data.data;
 
         });

@@ -14,7 +14,10 @@
 
     <div>
       <span ng-repeat="type in inventoryTypes">
-        <input name="inventory_type" type="radio" ng-model="fabric.inventory_type_id" value="{{type.id}}" required/>
+        <input type="radio"
+               ng-model="fabric.inventory_type_id"
+               ng-value="type.id"
+               required/>
         <label for="inventory_type">{{type.inventory_type}}</label>
       </span>
     </div>
@@ -26,8 +29,8 @@
     </div>
 
     <div input-field>
-      <select ng-model="fabric.fabric_type"
-              ng-options="fabricType.fabric_type as fabricType.fabric_type for fabricType in allFabricTypes"
+      <select ng-model="fabric.fabric_type_id"
+              ng-options="fabricType.id as fabricType.fabric_type for fabricType in allFabricTypes"
               material-select
               watch
               required>
