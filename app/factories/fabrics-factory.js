@@ -53,8 +53,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
   function addFabricWithImg(fabric) {
     return Upload.upload({
       method: 'POST',
-      // url: 'http://localhost:3000/fabrics',
-      url: 'https://git.heroku.com/fabric-much-api.git/fabrics',
+      url: `https://fabric-much-api.herokuapp.com/fabrics`,
       data: { fabric },
       headers: {
         // 'Authorization': 'Token token=' + link ,
@@ -95,8 +94,7 @@ fabricmuch.factory('fabricFactory', function($q, $http, apiFactory, Upload) {
   function editFabricWithImg(fabric) {
     return Upload.upload({
       method: 'PATCH',
-      // url: `http://localhost:3000/fabrics/${fabric.id}`,
-      url: `https://git.heroku.com/fabric-much-api.git/fabrics/${fabric.id}`,
+      url: `https://fabric-much-api.herokuapp.com/fabrics/${fabric.id}`,
       data: { fabric },
       headers: {
         // 'Authorization': 'Token token=' + link ,

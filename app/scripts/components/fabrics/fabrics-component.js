@@ -16,7 +16,6 @@ fabricmuch.component('fabricsComponent', {
     };
 
     $scope.submitFabric = function(fabric) {
-      debugger;
       if (fabric.fabric_image) {
         fabricFactory.addFabricWithImg(fabric)
           .then((fabric) => {

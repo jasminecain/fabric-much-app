@@ -31,7 +31,6 @@ fabricmuch.component('fabricEditComponent', {
     };
 
     // $scope.deletePhoto = function(formData, index) {
-    //   debugger;
     //   fabric.fabric_image.splice(index, 1);
     // };
 
